@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     # Services
     path('services/', views.services, name='services'),
-    path('services/<slug:slug>/', views.service_detail, name='service_detail'),
+    path('services/<slug:slug>/', views.service_detail, name='service_details'),
     # About
     path('about/', views.about, name='about'),
     # Team
@@ -17,7 +17,7 @@ urlpatterns = [
     path('testimonials/', views.testimonials, name='testimonials'),
     # Blog
     path('blog/', views.blog, name='blog'),
-    path('blog/<slug:slug>/', views.blog_detail, name='blog_detail'),
+    path('blog/<slug:slug>/', views.blog_detail, name='blog_details'),
     # Contact
     path('contact/', views.contact, name='contact'),
     # Cases/Projects

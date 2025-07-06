@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Axial Consulting{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'fonts/sayinistic-fonts/stylesheet.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom-animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/imp.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.bootstrap-touchspin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rtl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/scrollbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/header-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/banner-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/about-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/blog-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/fact-counter-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/faq-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/contact-page.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/breadcrumb-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/team-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/partner-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/testimonial-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/services-section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/module-css/footer-section.css' %}">
+    <link href="{% static 'css/color/theme-color.css' %}" id="jssDefault" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="{% static 'js/html5shiv.js' %}"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="boxed_wrapper ltr">
+        <!-- Main header-->
+        <header class="main-header header-style-one">
+            <div class="header">
+                <div class="auto-container">
+                    <div class="outer-box">
+                        <div class="header-left">
+                            <div class="main-logo-box">
+                                <a href="{% url 'consulting:home' %}">
+                                    <img src="{% static 'images/resources/logo.png' %}" alt="Axial Logo" title="">
+                                </a>
+                            </div>
+                            <div class="nav-outer style1 clearfix">
+                                <nav class="main-menu style1 navbar-expand-md navbar-light">
+                                    <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                        <ul class="navigation clearfix">
+                                            <li><a href="{% url 'consulting:home' %}">Home</a></li>
+                                            <li><a href="{% url 'consulting:about' %}">About</a></li>
+                                            <li><a href="{% url 'consulting:services' %}">Services</a></li>
+                                            <li><a href="{% url 'consulting:team' %}">Team</a></li>
+                                            <li><a href="{% url 'consulting:testimonials' %}">Testimonials</a></li>
+                                            <li><a href="{% url 'consulting:blog' %}">Blog</a></li>
+                                            <li><a href="{% url 'consulting:cases' %}">Cases</a></li>
+                                            <li><a href="{% url 'consulting:faq' %}">FAQ</a></li>
+                                            <li><a href="{% url 'consulting:contact' %}">Contact</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="header-right">
+                            <div class="phone-number-box1">
+                                <div class="icon">
+                                    <span class="icon-phone-call"></span>
+                                </div>
+                                <div class="phone">
+                                    <a href="tel:123456789">+3-(856) 000-9850</a>
+                                </div>
+                            </div>
+                            <div class="serach-button-style1">
+                                <button type="button" class="search-toggler">
+                                    <i class="icon-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        {% block content %}{% endblock %}
+        <div class="bottom-parallax">
+            <footer class="footer-area">
+                <div class="footer">
+                    <div class="container">
+                        <div class="row text-right-rtl">
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                <div class="single-footer-widget single-footer-widget--company-info marbtm50">
+                                    <div class="our-company-info">
+                                        <div class="text-box">
+                                            <p>60 Broklyn Golden Street New York. USA</p>
+                                        </div>
+                                        <h2><a href="tel:123456789">+3-(856) 000-9850</a></h2>
+                                        <h3><a href="mailto:yourmail@email.com">needhelp@company.com</a></h3>
+                                        <div class="footer-social-link">
+                                            <ul class="clearfix">
+                                                <li><a href="#"><i class="icon-twitter"></i></a></li>
+                                                <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
+                                                <li><a href="#"><i class="icon-pinterest"></i></a></li>
+                                                <li><a href="#"><i class="icon-instagram"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                <div class="single-footer-widget single-footer-widget--link-box marbtm50">
+                                    <div class="title">
+                                        <h3>Explore</h3>
+                                    </div>
+                                    <div class="footer-widget-links">
+                                        <ul>
+                                            <li><a href="{% url 'consulting:about' %}">About</a></li>
+                                            <li><a href="{% url 'consulting:team' %}">Meet the Team</a></li>
+                                            <li><a href="{% url 'consulting:cases' %}">Case Stories</a></li>
+                                            <li><a href="{% url 'consulting:blog' %}">Latest News</a></li>
+                                            <li><a href="{% url 'consulting:contact' %}">Contact</a></li>
+                                        </ul>
+                                        <ul class="right">
+                                            <li><a href="{% url 'consulting:contact' %}">Support</a></li>
+                                            <li><a href="{% url 'consulting:about' %}">Terms of Use</a></li>
+                                            <li><a href="{% url 'consulting:about' %}">Privacy Policy</a></li>
+                                            <li><a href="{% url 'consulting:contact' %}">Help</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                <div class="single-footer-widget">
+                                    <div class="title">
+                                        <h3>Newsletter</h3>
+                                    </div>
+                                    <form class="newsletter-form" action="#">
+                                        <input type="email" name="email" placeholder="Email Address">
+                                        <button class="btn-one" type="submit"><span class="txt">Subscribe</span></button>
+                                        <div class="checked-box1">
+                                            <input type="checkbox" name="newsletter-check" id="newsletter" checked="">
+                                            <label for="newsletter"><span></span>I agree to all terms and policies</label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="bottom-inner">
+                            <div class="footer-logo-style1">
+                                <a href="{% url 'consulting:home' %}"><img src="{% static 'images/footer/footer-logo.png' %}" alt="Axial Logo" title=""></a>
+                            </div>
+                            <div class="copyright">
+                                <p>Copyright &copy; 2022 <a href="{% url 'consulting:home' %}">Axial</a> All Rights Reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <button class="scroll-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></button>
+        <div id="search-popup" class="search-popup">
+            <div class="close-search"><i class="icon-close"></i></div>
+            <div class="popup-inner">
+                <div class="overlay-layer"></div>
+                <div class="search-form">
+                    <form method="post" action="{% url 'consulting:home' %}">
+                        <div class="form-group">
+                            <fieldset>
+                                <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required>
+                                <input type="submit" value="Search Now!" class="theme-btn style-four">
+                            </fieldset>
+                        </div>
+                    </form>
+                    <h3>Recent Search Keywords</h3>
+                    <ul class="recent-searches">
+                        <li><a href="{% url 'consulting:home' %}">waste</a></li>
+                        <li><a href="{% url 'consulting:home' %}">Dumpster</a></li>
+                        <li><a href="{% url 'consulting:home' %}">Zerowaste</a></li>
+                        <li><a href="{% url 'consulting:home' %}">Garbage</a></li>
+                        <li><a href="{% url 'consulting:home' %}">trash</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/aos.js' %}"></script>
+        <script src="{% static 'js/appear.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/isotope.js' %}"></script>
+        <script src="{% static 'js/jquery.bootstrap-touchspin.js' %}"></script>
+        <script src="{% static 'js/jquery.countTo.js' %}"></script>
+        <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+        <script src="{% static 'js/jquery.event.move.js' %}"></script>
+        <script src="{% static 'js/jquery.fancybox.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'js/jquery.paroller.min.js' %}"></script>
+        <script src="{% static 'js/jquery-sidebar-content.js' %}"></script>
+        <script src="{% static 'js/knob.js' %}"></script>
+        <script src="{% static 'js/map-script.js' %}"></script>
+        <script src="{% static 'js/owl.js' %}"></script>
+        <script src="{% static 'js/pagenav.js' %}"></script>
+        <script src="{% static 'js/scrollbar.js' %}"></script>
+        <script src="{% static 'js/swiper.min.js' %}"></script>
+        <script src="{% static 'js/tilt.jquery.js' %}"></script>
+        <script src="{% static 'js/TweenMax.min.js' %}"></script>
+        <script src="{% static 'js/validation.js' %}"></script>
+        <script src="{% static 'js/wow.js' %}"></script>
+        <script src="{% static 'js/jquery-1color-switcher.min.js' %}"></script>
+        <script src="{% static 'js/parallax.min.js' %}"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATY4Rxc8jNvDpsK8ZetC7JyN4PFVYGCGM&callback=initMap"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+    </div>
+</body>
+</html> 
