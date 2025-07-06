@@ -22,7 +22,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     # Cases/Projects
     path('cases/', views.cases, name='cases'),
-    path('cases/<slug:slug>/', views.case_detail, name='case_detail'),
+    path('cases/<slug:slug>/', views.case_detail, name='case_details'),
     # FAQ
     path('faq/', views.faq, name='faq'),
 ]

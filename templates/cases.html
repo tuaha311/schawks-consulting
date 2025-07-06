@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Cases - Axial Consulting{% endblock %}
 {% block content %}
-<!-- Unique content from cases.html goes here. Remove duplicate header/footer/scripts. Update all hrefs to use {% url %} tags. -->
 <!--Start breadcrumb area paroller-->
 <section class="breadcrumb-area">
     <div class="breadcrumb-area-bg" style="background-image: url(/static/images/breadcrumb/breadcrumb-1.jpg);">
@@ -14,7 +13,7 @@
 
                     <div class="breadcrumb-menu">
                         <ul>
-                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'consulting:home' %}">Home</a></li>
                             <li class="active">cases</li>
                         </ul>
                     </div>
@@ -50,7 +49,7 @@
                                 </p>
                             </div>
                             <div class="icon">
-                                <a href="#"><span class="icon-right-arrow"></span></a>
+                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
                             </div>
                         </div>
                     </div>
@@ -75,7 +74,7 @@
                                 </p>
                             </div>
                             <div class="icon">
-                                <a href="#"><span class="icon-right-arrow"></span></a>
+                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
                             </div>
                         </div>
                     </div>
@@ -101,7 +100,7 @@
                                 </p>
                             </div>
                             <div class="icon">
-                                <a href="#"><span class="icon-right-arrow"></span></a>
+                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
                             </div>
                         </div>
                     </div>
@@ -126,7 +125,7 @@
                                 </p>
                             </div>
                             <div class="icon">
-                                <a href="#"><span class="icon-right-arrow"></span></a>
+                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
                             </div>
                         </div>
                     </div>
@@ -152,7 +151,7 @@
                                 </p>
                             </div>
                             <div class="icon">
-                                <a href="#"><span class="icon-right-arrow"></span></a>
+                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
                             </div>
                         </div>
                     </div>
@@ -177,7 +176,7 @@
                                 </p>
                             </div>
                             <div class="icon">
-                                <a href="#"><span class="icon-right-arrow"></span></a>
+                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
                             </div>
                         </div>
                     </div>

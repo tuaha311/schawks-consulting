@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}FAQ - Axial Consulting{% endblock %}
 {% block content %}
-<!-- Unique content from faq.html goes here. Remove duplicate header/footer/scripts. Update all hrefs to use {% url %} tags. -->
+
 <!--Start breadcrumb area paroller-->
 <section class="breadcrumb-area">
     <div class="breadcrumb-area-bg" style="background-image: url(/static/images/breadcrumb/breadcrumb-1.jpg);">
@@ -13,7 +13,7 @@
                 <div class="inner-content">
                     <div class="breadcrumb-menu">
                         <ul>
-                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'consulting:home' %}">Home</a></li>
                             <li class="active">faq</li>
                         </ul>
                     </div>

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Blog - Axial Consulting{% endblock %}
 {% block content %}
-<!-- Unique content from blog.html goes here. Remove duplicate header/footer/scripts. Update all hrefs to use {% url %} tags. -->
 <!--Start breadcrumb area paroller-->
 <section class="breadcrumb-area">
     <div class="breadcrumb-area-bg" style="background-image: url(/static/images/breadcrumb/breadcrumb-1.jpg);">
@@ -14,7 +13,7 @@
 
                     <div class="breadcrumb-menu">
                         <ul>
-                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'consulting:home' %}">Home</a></li>
                             <li class="active">Blog</li>
                         </ul>
                     </div>
@@ -49,9 +48,9 @@
                                 <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
                             </ul>
                         </div>
-                        <h3><a href="{% url 'blog_single' %}">Accounting Support During the Exponential Growth</a></h3>
+                        <h3><a href="{% url 'consulting:blog_details' 1 %}">Accounting Support During the Exponential Growth</a></h3>
                         <div class="btn-box">
-                            <a href="{% url 'blog_single' %}">Read More</a>
+                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -73,9 +72,9 @@
                                 <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
                             </ul>
                         </div>
-                        <h3><a href="{% url 'blog_single' %}">How to Manage Your Business’s Online Reputation</a></h3>
+                        <h3><a href="{% url 'consulting:blog_details' 1 %}">How to Manage Your Business’s Online Reputation</a></h3>
                         <div class="btn-box">
-                            <a href="{% url 'blog_single' %}">Read More</a>
+                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -97,10 +96,10 @@
                                 <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
                             </ul>
                         </div>
-                        <h3><a href="{% url 'blog_single' %}">If You Want to be a Great Leader Shut Up and Just
+                        <h3><a href="{% url 'consulting:blog_details' 1 %}">If You Want to be a Great Leader Shut Up and Just
                                 Listen</a></h3>
                         <div class="btn-box">
-                            <a href="{% url 'blog_single' %}">Read More</a>
+                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -123,9 +122,9 @@
                                 <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
                             </ul>
                         </div>
-                        <h3><a href="{% url 'blog_single' %}">Accounting Support During the Exponential Growth</a></h3>
+                        <h3><a href="{% url 'consulting:blog_details' 1 %}">Accounting Support During the Exponential Growth</a></h3>
                         <div class="btn-box">
-                            <a href="{% url 'blog_single' %}">Read More</a>
+                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -147,9 +146,9 @@
                                 <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
                             </ul>
                         </div>
-                        <h3><a href="{% url 'blog_single' %}">How to Manage Your Business’s Online Reputation</a></h3>
+                        <h3><a href="{% url 'consulting:blog_details' 1 %}">How to Manage Your Business’s Online Reputation</a></h3>
                         <div class="btn-box">
-                            <a href="{% url 'blog_single' %}">Read More</a>
+                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -171,10 +170,10 @@
                                 <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
                             </ul>
                         </div>
-                        <h3><a href="{% url 'blog_single' %}">If You Want to be a Great Leader Shut Up and Just
+                        <h3><a href="{% url 'consulting:blog_details' 1 %}">If You Want to be a Great Leader Shut Up and Just
                                 Listen</a></h3>
                         <div class="btn-box">
-                            <a href="{% url 'blog_single' %}">Read More</a>
+                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
                         </div>
                     </div>
                 </div>
