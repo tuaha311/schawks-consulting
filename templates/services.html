@@ -10,7 +10,6 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="inner-content">
-
                     <div class="breadcrumb-menu">
                         <ul>
                             <li><a href="{% url 'consulting:home' %}">Home</a></li>
@@ -31,165 +30,29 @@
 <section class="service-page">
     <div class="container">
         <div class="row">
-
-            <!--Start Single Service Style2-->
-            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+            {% for service in services %}
+            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="{{ forloop.counter0|add:'1' }}00ms" data-wow-duration="1500ms">
                 <div class="single-service-style2">
                     <div class="img-holder">
                         <div class="inner">
-                            <img src="/static/images/services/service-v1-1.jpg" alt="">
+                            <img src="{{ service.display_image }}" alt="{{ service.title }}">
                         </div>
                         <div class="icon">
-                            <span class="icon-creative"></span>
+                            <span class="{{ service.icon }}"></span>
                         </div>
                     </div>
                     <div class="title-holder">
-                        <h3><a href="{% url 'consulting:service_details' 1 %}">Consumer Product</a></h3>
+                        <h3><a href="{% url 'consulting:service_details' service.slug %}">{{ service.title }}</a></h3>
                         <div class="text">
-                            <p>
-                                Lorem ipsum dolor sit don amet tristique ante vel dictum is not rhoncus elit
-                                sed.
-                            </p>
+                            <p>{{ service.description|truncatewords:20 }}</p>
                         </div>
                         <div class="btn-box">
-                            <a href="{% url 'consulting:service_details' 1 %}"><span class="icon-right-arrow"></span></a>
+                            <a href="{% url 'consulting:service_details' service.slug %}"><span class="icon-right-arrow"></span></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--End Single Service Style2-->
-            <!--Start Single Service Style2-->
-            <div class="col-xl-4 col-lg-4 wow fadeInDown" data-wow-delay="300ms" data-wow-duration="1500ms">
-                <div class="single-service-style2">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="/static/images/services/service-v1-2.jpg" alt="">
-                        </div>
-                        <div class="icon">
-                            <span class="icon-business"></span>
-                        </div>
-                    </div>
-                    <div class="title-holder">
-                        <h3><a href="{% url 'consulting:service_details' 2 %}">Banking Advising</a></h3>
-                        <div class="text">
-                            <p>
-                                Lorem ipsum dolor sit don amet tristique ante vel dictum is not rhoncus elit
-                                sed.
-                            </p>
-                        </div>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:service_details' 2 %}"><span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Service Style2-->
-            <!--Start Single Service Style2-->
-            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="500ms" data-wow-duration="1500ms">
-                <div class="single-service-style2">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="/static/images/services/service-v1-3.jpg" alt="">
-                        </div>
-                        <div class="icon">
-                            <span class="icon-global"></span>
-                        </div>
-                    </div>
-                    <div class="title-holder">
-                        <h3><a href="{% url 'consulting:service_details' 3 %}">Marketing Rules</a></h3>
-                        <div class="text">
-                            <p>
-                                Lorem ipsum dolor sit don amet tristique ante vel dictum is not rhoncus elit
-                                sed.
-                            </p>
-                        </div>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:service_details' 3 %}"><span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Service Style2-->
-
-            <!--Start Single Service Style2-->
-            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
-                <div class="single-service-style2">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="/static/images/services/service-v1-4.jpg" alt="">
-                        </div>
-                        <div class="icon">
-                            <span class="icon-mobile-analytics"></span>
-                        </div>
-                    </div>
-                    <div class="title-holder">
-                        <h3><a href="{% url 'consulting:service_details' 4 %}">Business Growth</a></h3>
-                        <div class="text">
-                            <p>
-                                Lorem ipsum dolor sit don amet tristique ante vel dictum is not rhoncus elit
-                                sed.
-                            </p>
-                        </div>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:service_details' 4 %}"><span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Service Style2-->
-            <!--Start Single Service Style2-->
-            <div class="col-xl-4 col-lg-4 wow fadeInDown" data-wow-delay="300ms" data-wow-duration="1500ms">
-                <div class="single-service-style2">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="/static/images/services/service-v1-5.jpg" alt="">
-                        </div>
-                        <div class="icon">
-                            <span class="icon-analysis"></span>
-                        </div>
-                    </div>
-                    <div class="title-holder">
-                        <h3><a href="{% url 'consulting:service_details' 5 %}">Audit Marketing</a></h3>
-                        <div class="text">
-                            <p>
-                                Lorem ipsum dolor sit don amet tristique ante vel dictum is not rhoncus elit
-                                sed.
-                            </p>
-                        </div>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:service_details' 5 %}"><span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Service Style2-->
-            <!--Start Single Service Style2-->
-            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="500ms" data-wow-duration="1500ms">
-                <div class="single-service-style2">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="/static/images/services/service-v1-6.jpg" alt="">
-                        </div>
-                        <div class="icon">
-                            <span class="icon-creative-1"></span>
-                        </div>
-                    </div>
-                    <div class="title-holder">
-                        <h3><a href="{% url 'consulting:service_details' 6 %}">Financial Advice</a></h3>
-                        <div class="text">
-                            <p>
-                                Lorem ipsum dolor sit don amet tristique ante vel dictum is not rhoncus elit
-                                sed.
-                            </p>
-                        </div>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:service_details' 6 %}"><span class="icon-right-arrow"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Service Style2-->
-
+            {% endfor %}
         </div>
     </div>
 </section>

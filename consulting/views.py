@@ -4,8 +4,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 
-# Import models (you'll need to create these models later)
-# from .models import Service, TeamMember, Testimonial, BlogPost, CaseStudy, FAQ
+from .models import TeamMember, Service
 
 def home(request):
     """Home page view"""
@@ -26,28 +25,58 @@ def about(request):
 
 def services(request):
     """Services list view"""
-    # services = Service.objects.filter(is_active=True)
+    services = Service.objects.filter(is_active=True)
     context = {
         'page_title': 'Our Services',
-        # 'services': services,
+        'services': services,
     }
     return render(request, 'services.html', context)
 
+from django.shortcuts import render, get_object_or_404
+from django.db import models
+from .models import Service
+
+
 def service_detail(request, slug):
     """Service detail view"""
-    # service = get_object_or_404(Service, slug=slug, is_active=True)
+    service = get_object_or_404(Service, slug=slug, is_active=True)
+    
+    # Prefetch related objects to avoid N+1 queries
+    service = Service.objects.select_related().prefetch_related(
+        'benefits', 'faqs'
+    ).get(slug=slug, is_active=True)
+    
+    # Get benefits and FAQs
+    benefits = service.get_benefits()
+    faqs = service.get_faqs()
+    
     context = {
-        'page_title': 'Service Details',
-        # 'service': service,
+        'page_title': service.title,
+        'service': service,
+        'benefits': benefits,
+        'faqs': faqs,
     }
     return render(request, 'services-details.html', context)
 
+
+def services_list(request):
+    """Services list view"""
+    services = Service.objects.filter(is_active=True).prefetch_related(
+        'benefits', 'faqs'
+    ).order_by('-created_at')
+    
+    context = {
+        'page_title': 'Our Services',
+        'services': services,
+    }
+    return render(request, 'services-list.html', context)
+
 def team(request):
     """Team members list view"""
-    # team_members = TeamMember.objects.filter(is_active=True)
+    team_members = TeamMember.objects.filter(is_active=True)
     context = {
         'page_title': 'Our Team',
-        # 'team_members': team_members,
+        'team_members': team_members,
     }
     return render(request, 'team.html', context)
 

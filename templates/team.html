@@ -30,16 +30,17 @@
 <section class="team-style1-area">
     <div class="auto-container">
         <div class="row">
-            <!--Start Single Team Style1-->
+            {% for member in team_members %}
             <div class="col-xl-3 col-lg-6 col-md-6">
                 <div class="single-team-style1 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">
                     <div class="img-holder">
                         <div class="inner">
-                            <img src="/static/images/team/team-v1-1.jpg" alt="" />
+                            <img src="{{ member.display_image }}" alt="{{ member.name }}" />
                         </div>
                         <div class="title-holder text-center">
-                            <h2><a href="#">Sarah Albert</a></h2>
-                            <h3>Consultant</h3>
+                            <h2>{{ member.name }}</h2>
+                            <h3>{{ member.role }}</h3>
+                            <p>{{ member.bio }}</p>
                             <ul class="social-links">
                                 <li><a href="#"><i class="icon-twitter"></i></a></li>
                                 <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
@@ -50,72 +51,7 @@
                     </div>
                 </div>
             </div>
-            <!--End Single Team Style1-->
-            <!--Start Single Team Style1-->
-            <div class="col-xl-3 col-lg-6 col-md-6">
-                <div class="single-team-style1 wow fadeInDown" data-wow-delay="100ms"
-                    data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="/static/images/team/team-v1-2.jpg" alt="" />
-                        </div>
-                        <div class="title-holder text-center">
-                            <h2><a href="#">David Cooper</a></h2>
-                            <h3>Consultant</h3>
-                            <ul class="social-links">
-                                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
-                                <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Team Style1-->
-            <!--Start Single Team Style1-->
-            <div class="col-xl-3 col-lg-6 col-md-6">
-                <div class="single-team-style1 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="/static/images/team/team-v1-3.jpg" alt="" />
-                        </div>
-                        <div class="title-holder text-center">
-                            <h2><a href="#">Jessica Brown</a></h2>
-                            <h3>Consultant</h3>
-                            <ul class="social-links">
-                                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
-                                <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Team Style1-->
-            <!--Start Single Team Style1-->
-            <div class="col-xl-3 col-lg-6 col-md-6">
-                <div class="single-team-style1 wow fadeInDown" data-wow-delay="100ms"
-                    data-wow-duration="1500ms">
-                    <div class="img-holder">
-                        <div class="inner">
-                            <img src="/static/images/team/team-v1-4.jpg" alt="" />
-                        </div>
-                        <div class="title-holder text-center">
-                            <h2><a href="#">Kevin Martin</a></h2>
-                            <h3>Consultant</h3>
-                            <ul class="social-links">
-                                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
-                                <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Team Style1-->
+            {% endfor %}
         </div>
     </div>
 </section>
