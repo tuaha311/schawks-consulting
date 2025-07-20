@@ -3,7 +3,7 @@
 {% block content %}
 <!--Start breadcrumb area paroller-->
 <section class="breadcrumb-area">
-    <div class="breadcrumb-area-bg" style="background-image: url(/static/images/breadcrumb/breadcrumb-1.jpg);">
+    <div class="breadcrumb-area-bg" style="background-image: url(https://leroux.qodeinteractive.com/wp-content/uploads/2023/02/about-us-title-img.jpg);">
     </div>
     <div class="shape-box"></div>
     <div class="container">
@@ -299,6 +299,29 @@
             <h2>Meet Our Experts</h2>
         </div>
         <div class="row">
+            {% for member in team_members %}
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="single-team-style1 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">
+                    <div class="img-holder">
+                        <div class="inner">
+                            <img src="{{ member.display_image }}" alt="{{ member.name }}" />
+                        </div>
+                        <div class="title-holder text-center">
+                            <h2>{{ member.name }}</h2>
+                            <h3>{{ member.role }}</h3>
+                            <p>{{ member.bio }}</p>
+                            <ul class="social-links">
+                                <li><a href="#"><i class="icon-twitter"></i></a></li>
+                                <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
+                                <li><a href="#"><i class="icon-instagram"></i></a></li>
+                                <li><a href="#"><i class="icon-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
                     <!--Start Single Team Style1-->
                     <div class="col-xl-3 col-lg-6 col-md-6">
                         <div class="single-team-style1 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">

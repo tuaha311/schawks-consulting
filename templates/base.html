@@ -49,6 +49,26 @@
     <![endif]-->
 </head>
 <body>
+     <!-- preloader -->
+    <div class="loader-wrap">
+        <div class="preloader">
+        <div class="preloader-close">x</div>
+        <div id="handle-preloader" class="handle-preloader">
+            <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+                <span data-text-preloader="a" class="letters-loading"> A </span>
+                <span data-text-preloader="x" class="letters-loading"> X </span>
+                <span data-text-preloader="i" class="letters-loading"> I </span>
+                <span data-text-preloader="a" class="letters-loading"> A </span>
+                <span data-text-preloader="l" class="letters-loading"> L </span>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+
     <div class="boxed_wrapper ltr">
         <!-- Main header-->
         <header class="main-header header-style-one">
@@ -170,7 +190,7 @@
                                 <a href="{% url 'consulting:home' %}"><img src="{% static 'images/footer/footer-logo.png' %}" alt="Axial Logo" title=""></a>
                             </div>
                             <div class="copyright">
-                                <p>Copyright &copy; 2022 <a href="{% url 'consulting:home' %}">Axial</a> All Rights Reserved.</p>
+                                <p>Copyright &copy; 2025 <a href="{% url 'consulting:home' %}">Axial</a> All Rights Reserved.</p>
                             </div>
                         </div>
                     </div>

@@ -3,7 +3,6 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-
 from .models import TeamMember, Service
 
 def home(request):
@@ -18,8 +17,10 @@ def home(request):
 
 def about(request):
     """About page view"""
+    team_members = TeamMember.objects.filter(is_active=True)
     context = {
         'page_title': 'About Us',
+        'team_members': team_members,
     }
     return render(request, 'about.html', context)
 
@@ -31,11 +32,6 @@ def services(request):
         'services': services,
     }
     return render(request, 'services.html', context)
-
-from django.shortcuts import render, get_object_or_404
-from django.db import models
-from .models import Service
-
 
 def service_detail(request, slug):
     """Service detail view"""
