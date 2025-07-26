@@ -1,5 +1,13 @@
 from django.contrib import admin
-from .models import TeamMember, Service
+from .models import (
+    TeamMember,
+    Service,
+    ServiceBenefit,
+    ServiceFAQ,
+    Case,
+    CaseKeypoint,
+)
+
 
 @admin.register(TeamMember)
 class TeamMemberAdmin(admin.ModelAdmin):
@@ -7,9 +15,7 @@ class TeamMemberAdmin(admin.ModelAdmin):
     search_fields = ("name", "role")
     list_filter = ("is_active",)
 
-# admin.py
-from django.contrib import admin
-from .models import Service, ServiceBenefit, ServiceFAQ
+
 
 
 class ServiceBenefitInline(admin.TabularInline):
@@ -83,3 +89,20 @@ class ServiceFAQAdmin(admin.ModelAdmin):
     list_filter = ('service',)
     list_select_related = ('service',)
     fields = ('service', 'question', 'answer')
+
+
+class CaseKeypointInline(admin.TabularInline):
+    model = CaseKeypoint
+    extra = 1
+    fields = ("text",)
+
+
+@admin.register(Case)
+class CaseAdmin(admin.ModelAdmin):
+    """Admin configuration for Case model."""
+    list_display = ("title", "slug", "client", "category", "is_published", "created_at")
+    search_fields = ("title", "client", "category")
+    list_filter = ("is_published", "category", "case_date")
+    prepopulated_fields = {"slug": ("title",)}
+    readonly_fields = ("created_at", "updated_at")
+    inlines = (CaseKeypointInline,)

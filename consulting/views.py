@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import TeamMember, Service
+from .models import TeamMember, Service, Case
 
 def home(request):
     """Home page view"""
@@ -130,19 +130,36 @@ def contact(request):
 
 def cases(request):
     """Case studies list view"""
-    # cases = CaseStudy.objects.filter(is_published=True)
+    cases_qs = Case.objects.filter(is_published=True).order_by('-case_date', '-created_at')
     context = {
         'page_title': 'Our Cases',
-        # 'cases': cases,
+        'cases': cases_qs,
     }
     return render(request, 'cases.html', context)
 
 def case_detail(request, slug):
     """Case study detail view"""
-    # case = get_object_or_404(CaseStudy, slug=slug, is_published=True)
+    case_obj = get_object_or_404(Case, slug=slug, is_published=True)
+
+    # Determine previous and next cases by chronological order (newest first)
+    prev_case = (
+        Case.objects.filter(is_published=True, case_date__lt=case_obj.case_date)
+        .order_by('-case_date')
+        .first()
+        if case_obj.case_date else None
+    )
+    next_case = (
+        Case.objects.filter(is_published=True, case_date__gt=case_obj.case_date)
+        .order_by('case_date')
+        .first()
+        if case_obj.case_date else None
+    )
+
     context = {
-        'page_title': 'Case Study Details',
-        # 'case': case,
+        'page_title': case_obj.title,
+        'case': case_obj,
+        'prev_case': prev_case,
+        'next_case': next_case,
     }
     return render(request, 'case-details.html', context)
 

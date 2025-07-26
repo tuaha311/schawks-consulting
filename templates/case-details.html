@@ -33,26 +33,28 @@
             <div class="col-xl-12">
                 <div class="case-deatils-content">
                     <div class="case-deatils__img-box">
-                        <img src="/static/images/resources/case-deatils-img-1.jpg" alt="">
+                        {% if case.display_image %}
+                        <img src="{{ case.display_image }}" alt="{{ case.title }}">
+                        {% endif %}
                     </div>
                     <div class="case-info-content">
                         <div class="row">
                             <div class="col-xl-3 col-lg-6 col-md-6">
                                 <div class="single-box-case-info">
                                     <p>Clients:</p>
-                                    <h3>Jessica Brown</h3>
+                                    <h3>{{ case.client }}</h3>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6">
                                 <div class="single-box-case-info">
                                     <p>Category:</p>
-                                    <h3>Consulting, Finance</h3>
+                                    <h3>{{ case.category }}</h3>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6">
                                 <div class="single-box-case-info">
                                     <p>Date:</p>
-                                    <h3>20 October, 2021</h3>
+                                    <h3>{{ case.case_date|date:'d F, Y' }}</h3>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-6 col-md-6">
@@ -68,23 +70,29 @@
                         </div>
                     </div>
                     <div class="case-deatils-text-box">
-                        <h2>Business Growth Through Expert Leadership</h2>
-                        <p class="text1">Need something changed or is there something not quite working the way you envisaged? Is your van a little old and tired and need refreshing? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Ut enim ad minim veniam. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat. There are many variations of passages.</p>
+                        <h2>{{ case.title }}</h2>
+                        <p class="text1">{{ case.short_summary }}</p>
+                        <p class="text2">{{ case.description|linebreaks }}</p>
                         <ul>
-                            <li><span class="icon-check"></span> Lorem Ipsum is simply dummy text is your van a little old and tired.</li>
-                            <li><span class="icon-check"></span> When an unknown printer took has survived not only five centuries.</li>
-                            <li><span class="icon-check"></span> The leap into electronic typesetting nisl pulvinar ornare eget.</li>
+                            {% for point in case.keypoints.all %}
+                            <li><span class="icon-check"></span> {{ point.text }}</li>
+                            {% empty %}
+                            <li>No key points available.</li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="case-details-prew-next-button">
                         <div class="single-btn prew">
-                            <a href="#"><span class="icon-right-arrow"></span></a>
-                            <p>prev</p>
+                            {% if prev_case %}
+                            <a href="{% url 'consulting:case_details' prev_case.slug %}"><span class="icon-right-arrow"></span></a>
+                            <p>Prev</p>
+                            {% endif %}
                         </div>
                         <div class="single-btn next">
+                            {% if next_case %}
                             <p>Next</p>
-                            <a href="#"><span class="icon-right-arrow"></span></a>
+                            <a href="{% url 'consulting:case_details' next_case.slug %}"><span class="icon-right-arrow"></span></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

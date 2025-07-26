@@ -101,3 +101,49 @@ class ServiceFAQ(models.Model):
     
     def __str__(self):
         return f"FAQ for {self.service.title}: {self.question}"
+
+
+class Case(models.Model):
+    """A case study / project showcase."""
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, max_length=200)
+
+    # Images
+    image = models.ImageField(upload_to='cases/', blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True)
+
+    # Meta info
+    client = models.CharField(max_length=200, blank=True)
+    category = models.CharField(max_length=200, blank=True)
+    case_date = models.DateField(blank=True, null=True)
+
+    # Content
+    short_summary = models.TextField(blank=True, help_text="Short blurb displayed on list page")
+    description = models.TextField(blank=True, help_text="Full description shown on detail page")
+
+    # Status & timestamps
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def display_image(self):
+        if self.image:
+            return self.image.url
+        elif self.image_url:
+            return self.image_url
+        return ''
+
+    def __str__(self):
+        return self.title
+    
+class CaseKeypoint(models.Model):
+    case = models.ForeignKey(Case, on_delete=models.CASCADE, related_name='keypoints')
+    text = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return f"{self.text} (Case: {self.case.title})"

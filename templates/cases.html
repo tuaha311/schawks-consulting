@@ -31,159 +31,35 @@
 <section class="case-stories-area">
     <div class="container">
         <div class="row">
-            <!--Start Case Stories Single-->
-            <div class="col-xl-6 col-lg-6">
+            {# Dynamic cases loop #}
+            {% for case in cases %}
+            <div class="col-xl-6 col-lg-6 mb-4">
                 <div class="case-stories__single">
                     <div class="img-box">
-                        <img src="/static/images/resources/case-stories-img1.jpg" alt="">
+                        {% if case.display_image %}
+                        <img src="{{ case.display_image }}" alt="{{ case.title }}" />
+                        {% endif %}
                     </div>
                     <div class="content-box">
                         <div class="top-text">
-                            <h2>Business Growth <br>Through Expert <br> Leadership</h2>
+                            {# Add <br> between words where newline present in title #}
+                            <h2>{{ case.title|linebreaksbr }}</h2>
                             <div class="line"></div>
                         </div>
                         <div class="bottom-text">
                             <div class="text">
-                                <p>When an unknown printer took a galley<br> type and it to make a type
-                                    book.
-                                </p>
+                                <p>{{ case.short_summary|truncatewords:25 }}</p>
                             </div>
                             <div class="icon">
-                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
+                                <a href="{% url 'consulting:case_details' case.slug %}"><span class="icon-right-arrow"></span></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--End Case Stories Single-->
-            <!--Start Case Stories Single-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="case-stories__single">
-                    <div class="img-box">
-                        <img src="/static/images/resources/case-stories-img2.jpg" alt="">
-                    </div>
-                    <div class="content-box">
-                        <div class="top-text">
-                            <h2>The Marketing<br> Advice and Risk<br> Mangement</h2>
-                            <div class="line"></div>
-                        </div>
-                        <div class="bottom-text">
-                            <div class="text">
-                                <p>When an unknown printer took a galley<br> type and it to make a type
-                                    book.
-                                </p>
-                            </div>
-                            <div class="icon">
-                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Case Stories Single-->
-
-            <!--Start Case Stories Single-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="case-stories__single">
-                    <div class="img-box">
-                        <img src="/static/images/resources/case-stories-img3.jpg" alt="">
-                    </div>
-                    <div class="content-box">
-                        <div class="top-text">
-                            <h2>Finance Consulting<br> and Business<br> Strategy</h2>
-                            <div class="line"></div>
-                        </div>
-                        <div class="bottom-text">
-                            <div class="text">
-                                <p>When an unknown printer took a galley<br> type and it to make a type
-                                    book.
-                                </p>
-                            </div>
-                            <div class="icon">
-                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Case Stories Single-->
-            <!--Start Case Stories Single-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="case-stories__single">
-                    <div class="img-box">
-                        <img src="/static/images/resources/case-stories-img4.jpg" alt="">
-                    </div>
-                    <div class="content-box">
-                        <div class="top-text">
-                            <h2>Substantial<br> Business Market<br> Rates</h2>
-                            <div class="line"></div>
-                        </div>
-                        <div class="bottom-text">
-                            <div class="text">
-                                <p>When an unknown printer took a galley<br> type and it to make a type
-                                    book.
-                                </p>
-                            </div>
-                            <div class="icon">
-                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Case Stories Single-->
-
-            <!--Start Case Stories Single-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="case-stories__single">
-                    <div class="img-box">
-                        <img src="/static/images/resources/case-stories-img5.jpg" alt="">
-                    </div>
-                    <div class="content-box">
-                        <div class="top-text">
-                            <h2>Digital Campaigns<br> for the Business<br> Success</h2>
-                            <div class="line"></div>
-                        </div>
-                        <div class="bottom-text">
-                            <div class="text">
-                                <p>When an unknown printer took a galley<br> type and it to make a type
-                                    book.
-                                </p>
-                            </div>
-                            <div class="icon">
-                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Case Stories Single-->
-            <!--Start Case Stories Single-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="case-stories__single">
-                    <div class="img-box">
-                        <img src="/static/images/resources/case-stories-img6.jpg" alt="">
-                    </div>
-                    <div class="content-box">
-                        <div class="top-text">
-                            <h2>Top-Notch<br> & Extra Briliant<br> Consulting</h2>
-                            <div class="line"></div>
-                        </div>
-                        <div class="bottom-text">
-                            <div class="text">
-                                <p>When an unknown printer took a galley<br> type and it to make a type
-                                    book.
-                                </p>
-                            </div>
-                            <div class="icon">
-                                <a href="{% url 'consulting:case_details' 1 %}"><span class="icon-right-arrow"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Case Stories Single-->
-
+            {% empty %}
+            <p class="text-center">No cases available at the moment.</p>
+            {% endfor %}
         </div>
     </div>
 </section>
