@@ -1,0 +1,46 @@
+<section class="partner-area">
+    <div class="container">
+        <div class="brand-content">
+            <div class="inner">
+                <ul class="partner-box partner-carousel owl-carousel owl-theme owl-dot-style1 rtl-carousel">
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const partners = [
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture9-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture10-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture11-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture12-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture13-1.jpg",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture14-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture15-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture16-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture17-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture19-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture20-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture21-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture22-1.jpg",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture23-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture24-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture26-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture27-1.jpg",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture28-1.jpg",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture29-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture30-1.png",
+      "https://axialconsulting.io/wp-content/uploads/2024/07/Picture32-1.png"
+    ];
+  
+    const partnerCarousel = document.querySelector(".partner-carousel");
+  
+    partners.forEach(url => {
+      const li = document.createElement("li");
+      li.className = "single-partner-logo-box";
+      li.innerHTML = `<a href="#"><img src="${url}" alt="Partner Logo"></a>`;
+      partnerCarousel.appendChild(li);
+    });
+  </script>
+  

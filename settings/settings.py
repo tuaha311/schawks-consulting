@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
                 'consulting.context_processors.site_info',
+                'consulting.context_processors.navigation_data',
             ],
         },
     },

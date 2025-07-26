@@ -169,83 +169,26 @@
                                         }
                                     }'>
 
-                        <!--Start Single Testimonial Style1-->
-                        <div class="single-testimonial-style1">
-                            <div class="text">
-                                <p>I was impresed by the company services, not lorem ipsum is simply free
-                                    text of used. Neque porro est qui dolorem ipsum quia.</p>
-                            </div>
-                            <div class="bottom-box">
-                                <div class="client-name">
-                                    <h3>Christine Rose</h3>
-                                    <span>Customer</span>
-                                </div>
-                                <div class="client-img">
-                                    <div class="inner">
-                                        <img src="/static/images/testimonial/testimonial-v1-1.jpg" alt="">
+                                {% for t in testimonials %}
+                                <div class="single-testimonial-style1">
+                                    <div class="text">
+                                        <p>{{ t.text }}</p>
+                                    </div>
+                                    <div class="bottom-box">
+                                        <div class="client-name">
+                                            <h3>{{ t.name }}</h3>
+                                            <span>{{ t.role }}</span>
+                                        </div>
+                                        <div class="client-img">
+                                            <div class="inner">
+                                                <img src="{{ t.display_image }}" alt="{{ t.name }}" style="width: 100px; height: 100px;">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!--End Single Testimonial Style1-->
-                        <!--Start Single Testimonial Style1-->
-                        <div class="single-testimonial-style1">
-                            <div class="text">
-                                <p>I was impresed by the company services, not lorem ipsum is simply free
-                                    text of used. Neque porro est qui dolorem ipsum quia.</p>
-                            </div>
-                            <div class="bottom-box">
-                                <div class="client-name">
-                                    <h3>Mike Hardson</h3>
-                                    <span>Customer</span>
-                                </div>
-                                <div class="client-img">
-                                    <div class="inner">
-                                        <img src="/static/images/testimonial/testimonial-v1-2.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Single Testimonial Style1-->
-
-                        <!--Start Single Testimonial Style1-->
-                        <div class="single-testimonial-style1">
-                            <div class="text">
-                                <p>I was impresed by the company services, not lorem ipsum is simply free
-                                    text of used. Neque porro est qui dolorem ipsum quia.</p>
-                            </div>
-                            <div class="bottom-box">
-                                <div class="client-name">
-                                    <h3>Christine Rose</h3>
-                                    <span>Customer</span>
-                                </div>
-                                <div class="client-img">
-                                    <div class="inner">
-                                        <img src="/static/images/testimonial/testimonial-v1-1.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Single Testimonial Style1-->
-                        <!--Start Single Testimonial Style1-->
-                        <div class="single-testimonial-style1">
-                            <div class="text">
-                                <p>I was impresed by the company services, not lorem ipsum is simply free
-                                    text of used. Neque porro est qui dolorem ipsum quia.</p>
-                            </div>
-                            <div class="bottom-box">
-                                <div class="client-name">
-                                    <h3>Mike Hardson</h3>
-                                    <span>Customer</span>
-                                </div>
-                                <div class="client-img">
-                                    <div class="inner">
-                                        <img src="/static/images/testimonial/testimonial-v1-2.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Single Testimonial Style1-->
+                                {% empty %}
+                                <p>No testimonials available at the moment.</p>
+                                {% endfor %}
 
                     </div>
                 </div>
@@ -322,97 +265,6 @@
             </div>
             {% endfor %}
         </div>
-                    <!--Start Single Team Style1-->
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="single-team-style1 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">
-                            <div class="img-holder">
-                                <div class="inner">
-                                    <img src="/static/images/team/team-v1-1.jpg" alt="" />
-                                </div>
-                                <div class="title-holder text-center">
-                                    <h2><a href="#">Sarah Albert</a></h2>
-                                    <h3>Consultant</h3>
-                                    <ul class="social-links">
-                                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single Team Style1-->
-                    <!--Start Single Team Style1-->
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="single-team-style1 wow fadeInDown" data-wow-delay="100ms"
-                            data-wow-duration="1500ms">
-                            <div class="img-holder">
-                                <div class="inner">
-                                    <img src="/static/images/team/team-v1-2.jpg" alt="" />
-                                </div>
-                                <div class="title-holder text-center">
-                                    <h2><a href="#">David Cooper</a></h2>
-                                    <h3>Consultant</h3>
-                                    <ul class="social-links">
-                                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single Team Style1-->
-                    <!--Start Single Team Style1-->
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="single-team-style1 wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">
-                            <div class="img-holder">
-                                <div class="inner">
-                                    <img src="/static/images/team/team-v1-3.jpg" alt="" />
-                                </div>
-                                <div class="title-holder text-center">
-                                    <h2><a href="#">Jessica Brown</a></h2>
-                                    <h3>Consultant</h3>
-                                    <ul class="social-links">
-                                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single Team Style1-->
-                    <!--Start Single Team Style1-->
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="single-team-style1 wow fadeInDown" data-wow-delay="100ms"
-                            data-wow-duration="1500ms">
-                            <div class="img-holder">
-                                <div class="inner">
-                                    <img src="/static/images/team/team-v1-4.jpg" alt="" />
-                                </div>
-                                <div class="title-holder text-center">
-                                    <h2><a href="#">Kevin Martin</a></h2>
-                                    <h3>Consultant</h3>
-                                    <ul class="social-links">
-                                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                        <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single Team Style1-->
-                </div>
-            </div>
-        </section>
-        <!--End Team Style1 Area-->
-
 
         <!--Start Slogan Style2 Area-->
         <section class="slogan-style2-area">

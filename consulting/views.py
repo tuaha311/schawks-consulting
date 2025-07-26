@@ -22,9 +22,11 @@ def home(request):
 def about(request):
     """About page view"""
     team_members = TeamMember.objects.filter(is_active=True)
+    testimonials_qs = Testimonial.objects.filter(is_active=True)
     context = {
         'page_title': 'About Us',
         'team_members': team_members,
+        'testimonials': testimonials_qs,
     }
     return render(request, 'about.html', context)
 
