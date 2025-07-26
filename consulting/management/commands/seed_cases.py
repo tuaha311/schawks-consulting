@@ -118,12 +118,21 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         created = 0
-        for data in SAMPLE_CASES:
-            slug = slugify(data["title"])
-            obj, was_created = Case.objects.get_or_create(slug=slug, defaults=data)
+        for case_data in SAMPLE_CASES:
+            # Extract keypoints before creating the case
+            keypoints = case_data.pop('keypoints', [])
+            
+            # Create the case without keypoints
+            slug = slugify(case_data["title"])
+            obj, was_created = Case.objects.get_or_create(
+                slug=slug,
+                defaults=case_data
+            )
+            
             if was_created:
                 created += 1
-            # create keypoints
-            for text in data.get("keypoints", []):
-                CaseKeypoint.objects.get_or_create(case=obj, text=text)
+                # Add keypoints after case is created
+                for text in keypoints:
+                    CaseKeypoint.objects.create(case=obj, text=text)
+                    
         self.stdout.write(self.style.SUCCESS(f"Seeded {created} Case records."))

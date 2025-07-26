@@ -15,6 +15,10 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import os
 from dotenv import load_dotenv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import cloudinary_storage
 
 load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'consulting',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -82,17 +88,17 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# DATABASE_URL = os.environ.get('DATABASE_URL')
 # DATABASES = {
-#     'default': dj_database_url.parse(DATABASE_URL, conn_max_age=3600)
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
+DATABASES = {
+    'default': dj_database_url.parse(DATABASE_URL, conn_max_age=3600)
+}
 
 
 # Password validation
@@ -135,6 +141,37 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
+if os.environ.get("CLOUDINARY_CLOUD_NAME", None):
+    cloudinary.config(
+        cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME", ""),
+        api_key=os.environ.get("CLOUDINARY_API_KEY", ""),
+        api_secret=os.environ.get("CLOUDINARY_API_SECRET", "")
+    )
+
+    CLOUDINARY_STORAGE = {
+        "CLOUD_NAME": os.environ.get('CLOUDINARY_CLOUD_NAME'),
+        "API_KEY": os.environ.get('CLOUDINARY_API_KEY'),
+        "API_SECRET": os.environ.get('CLOUDINARY_API_SECRET')
+    }
+
+    # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+    STORAGES = {
+        "default": {
+            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+
+    print("*" * 50)
+    print("Cloudinary Loaded Successfully")
+    print("*" * 50)
+
+    DATA_UPLOAD_MAX_MEMORY_SIZE = 524288000
 
 # Media files (Uploaded files)
 MEDIA_URL = '/media/'

@@ -10,12 +10,14 @@ def home(request):
     """Home page view"""
     cases_qs = Case.objects.filter(is_published=True).order_by('-case_date', '-created_at')[:2]
     testimonials_qs = Testimonial.objects.filter(is_active=True)
+    recent_posts = BlogPost.objects.filter(is_published=True).order_by('-publish_date')[:3]
     context = {
         'page_title': 'Home',
         'hero_title': 'Strategic Consulting for Business Growth',
         'hero_subtitle': 'Expert solutions for your business challenges',
         'cases': cases_qs,
         'testimonials': testimonials_qs,
+        'recent_posts': recent_posts,
     }
     return render(request, 'index.html', context)
 

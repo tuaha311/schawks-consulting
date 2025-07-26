@@ -30,46 +30,71 @@
 <section class="blog-page-one">
     <div class="container">
         <div class="row">
-            {% for post in posts %}
-            <div class="col-xl-4 col-lg-6">
-                <div class="single-blog-style1">
-                    <div class="img-holder">
-                        {% if post.display_image %}
-                        <img src="{{ post.display_image }}" alt="{{ post.title }}">
-                        {% endif %}
-                        <div class="date-box">
-                            <p>{{ post.publish_date|date:'d M' }}</p>
+            <!-- Main Content Column (8 columns) -->
+            <div class="col-xl-8 col-lg-7">
+                <div class="row">
+                    {% for post in posts %}
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="single-blog-style1">
+                            <div class="img-holder">
+                                {% if post.display_image %}
+                                <img src="{{ post.display_image }}" alt="{{ post.title }}">
+                                {% endif %}
+                                <div class="date-box">
+                                    <p>{{ post.publish_date|date:'d M' }}</p>
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <div class="meta-info">
+                                    <ul>
+                                        <li><span class="icon-user"></span><a href="#">by {{ post.author }}</a></li>
+                                        <li><span class="icon-conversation"></span><a href="#">Comments</a></li>
+                                    </ul>
+                                </div>
+                                <h3><a href="{% url 'consulting:blog_details' post.slug %}">{{ post.title }}</a></h3>
+                                {% if post.excerpt %}
+                                <p>{{ post.excerpt|truncatewords:20 }}</p>
+                                {% endif %}
+                                <div class="btn-box">
+                                    <a href="{% url 'consulting:blog_details' post.slug %}">Read More</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-holder">
-                        <div class="meta-info">
-                            <ul>
-                                <li><span class="icon-user"></span><a href="#">by {{ post.author }}</a></li>
-                                <li><span class="icon-conversation"></span><a href="#">Comments</a></li>
-                            </ul>
-                        </div>
-                        <h3><a href="{% url 'consulting:blog_details' post.slug %}">{{ post.title }}</a></h3>
-                        {% if post.excerpt %}
-                        <p>{{ post.excerpt|truncatewords:20 }}</p>
-                        {% endif %}
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:blog_details' post.slug %}">Read More</a>
+                    {% empty %}
+                    <div class="col-12">
+                        <p class="text-center">No blog posts available at the moment.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination would go here -->
+                {% if posts.has_other_pages %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pagination">
+                            {% if posts.has_previous %}
+                                <a href="?page={{ posts.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}" class="prev"><i class="fa fa-angle-left"></i></a>
+                            {% endif %}
+                            
+                            {% for i in posts.paginator.page_range %}
+                                {% if posts.number == i %}
+                                    <a href="#" class="active">{{ i }}</a>
+                                {% else %}
+                                    <a href="?page={{ i }}{% if search_query %}&search={{ search_query }}{% endif %}">{{ i }}</a>
+                                {% endif %}
+                            {% endfor %}
+                            
+                            {% if posts.has_next %}
+                                <a href="?page={{ posts.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}" class="next"><i class="fa fa-angle-right"></i></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-            </div>
-            {% empty %}
-            <div class="col-xl-12">
-                <p class="text-center">No blog posts available at the moment.</p>
-            </div>
-            {% endfor %}
-        </div>
-        
-        <!--
-        <div class="row">
-            <div class="col-xl-8 col-lg-7">
+                {% endif %}
             </div>
             
+            <!-- Sidebar Column (4 columns) -->
             <div class="col-xl-4 col-lg-5">
                 <div class="thm-sidebar-box">
                     <div class="sidebar-search-box">
@@ -139,7 +164,6 @@
                     </div>
                 </div>
             </div>
-        End Thm Sidebar Box-->
         </div>
     </div>
 </section>

@@ -151,14 +151,14 @@
 
                         <!--Start Header Right-->
                         <div class="header-right">
-                            <div class="phone-number-box1">
+                            {% comment %} <div class="phone-number-box1">
                                 <div class="icon">
                                     <span class="icon-phone-call"></span>
                                 </div>
                                 <div class="phone">
                                     <a href="tel:123456789">+3-(856) 000-9850</a>
                                 </div>
-                            </div>
+                            </div> {% endcomment %}
                             <div class="serach-button-style1">
                                 <button type="button" class="search-toggler">
                                     <i class="icon-magnifying-glass"></i>
@@ -231,7 +231,7 @@
                                         <div class="text-box">
                                             <p>60 Broklyn Golden Street New York. USA</p>
                                         </div>
-                                        <h2><a href="tel:123456789">+3-(856) 000-9850</a></h2>
+                                        {% comment %} <h2><a href="tel:123456789">+3-(856) 000-9850</a></h2> {% endcomment %}
                                         <h3><a href="mailto:yourmail@email.com">needhelp@company.com</a></h3>
                                         <div class="footer-social-link">
                                             <ul class="clearfix">
@@ -304,10 +304,10 @@
             <div class="popup-inner">
                 <div class="overlay-layer"></div>
                 <div class="search-form">
-                    <form method="post" action="{% url 'consulting:home' %}">
+                    <form action="{% url 'consulting:blog' %}" method="get">
                         <div class="form-group">
                             <fieldset>
-                                <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required>
+                                <input type="search" class="form-control" name="search" value="" placeholder="Search Here" required>
                                 <input type="submit" value="Search Now!" class="theme-btn style-four">
                             </fieldset>
                         </div>
