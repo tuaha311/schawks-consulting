@@ -296,8 +296,8 @@
         <div class="col-xl-4 col-lg-5">
           <div class="thm-sidebar-box">
             <div class="sidebar-search-box">
-              <form class="search-form" action="#">
-                <input placeholder="Search" type="text" />
+              <form class="search-form" action="{% url 'consulting:blog' %}" method="get">
+                <input placeholder="Search" type="text" name="search" value="{{ search_query|default:'' }}" />
                 <button type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
@@ -310,84 +310,46 @@
               </div>
               <div class="sidebar-blog-post">
                 <ul class="blog-post">
+                  {% for recent_post in recent_posts %}
                   <li>
                     <div class="inner">
                       <div class="img-box">
+                        {% if recent_post.display_image %}
                         <img
-                          src="/static/images/sidebar/news-1.jpg"
-                          alt="Awesome Image"
+                          src="{{ recent_post.display_image }}"
+                          alt="{{ recent_post.title }}"
                         />
+                        {% else %}
+                        <img
+                          src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=400&q=80"
+                          alt="{{ recent_post.title }}"
+                        />
+                        {% endif %}
                         <div class="overlay-content">
-                          <a href="#"
+                          <a href="{% url 'consulting:blog_details' recent_post.slug %}"
                             ><i class="fa fa-link" aria-hidden="true"></i
                           ></a>
                         </div>
                       </div>
                       <div class="title-box">
                         <div class="admin">
-                          <span class="icon-user"></span> by Admin
+                          <span class="icon-user"></span> by {{ recent_post.author }}
                         </div>
                         <h4>
-                          <a href="#"
-                            >Integer tristique odio<br />
-                            vitae lorem gra</a
+                          <a href="{% url 'consulting:blog_details' recent_post.slug %}"
+                            >{{ recent_post.title|truncatechars:40 }}</a
                           >
                         </h4>
                       </div>
                     </div>
                   </li>
+                  {% empty %}
                   <li>
                     <div class="inner">
-                      <div class="img-box">
-                        <img
-                          src="/static/images/sidebar/news-2.jpg"
-                          alt="Awesome Image"
-                        />
-                        <div class="overlay-content">
-                          <a href="#"
-                            ><i class="fa fa-link" aria-hidden="true"></i
-                          ></a>
-                        </div>
-                      </div>
-                      <div class="title-box">
-                        <div class="admin">
-                          <span class="icon-user"></span> by Admin
-                        </div>
-                        <h4>
-                          <a href="#"
-                            >Integer tristique odio<br />
-                            vitae lorem gra</a
-                          >
-                        </h4>
-                      </div>
+                      <p>No recent posts available.</p>
                     </div>
                   </li>
-                  <li>
-                    <div class="inner">
-                      <div class="img-box">
-                        <img
-                          src="/static/images/sidebar/news-3.jpg"
-                          alt="Awesome Image"
-                        />
-                        <div class="overlay-content">
-                          <a href="#"
-                            ><i class="fa fa-link" aria-hidden="true"></i
-                          ></a>
-                        </div>
-                      </div>
-                      <div class="title-box">
-                        <div class="admin">
-                          <span class="icon-user"></span> by Admin
-                        </div>
-                        <h4>
-                          <a href="#"
-                            >Integer tristique odio<br />
-                            vitae lorem gra</a
-                          >
-                        </h4>
-                      </div>
-                    </div>
-                  </li>
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -397,11 +359,11 @@
                 <h3>Categories</h3>
               </div>
               <ul class="sidebar-categories-box">
-                <li><a href="#">Consulting</a></li>
-                <li><a href="#">Marketing</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Business & Finance</a></li>
-                <li><a href="#">Bank Cryptcy</a></li>
+                {% for category in categories %}
+                <li><a href="{% url 'consulting:blog' %}?category={{ category.slug }}">{{ category.name }}</a></li>
+                {% empty %}
+                <li>No categories available.</li>
+                {% endfor %}
               </ul>
             </div>
 

@@ -64,6 +64,84 @@
             </div>
             {% endfor %}
         </div>
+        
+        <div class="row">
+            <div class="col-xl-8 col-lg-7">
+                <!-- Blog posts already rendered above -->
+            </div>
+            
+            <!--Start Thm Sidebar Box-->
+            <div class="col-xl-4 col-lg-5">
+                <div class="thm-sidebar-box">
+                    <div class="sidebar-search-box">
+                        <form class="search-form" action="{% url 'consulting:blog' %}" method="get">
+                            <input placeholder="Search" type="text" name="search" value="{{ search_query|default:'' }}" />
+                            <button type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="single-sidebar-box">
+                        <div class="sidebar-title">
+                            <h3>Recent Posts</h3>
+                        </div>
+                        <div class="sidebar-blog-post">
+                            <ul class="blog-post">
+                                {% for recent_post in recent_posts %}
+                                <li>
+                                    <div class="inner">
+                                        <div class="img-box">
+                                            {% if recent_post.display_image %}
+                                            <img src="{{ recent_post.display_image }}" alt="{{ recent_post.title }}" />
+                                            {% else %}
+                                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=400&q=80" alt="{{ recent_post.title }}" />
+                                            {% endif %}
+                                            <div class="overlay-content">
+                                                <a href="{% url 'consulting:blog_details' recent_post.slug %}">
+                                                    <i class="fa fa-link" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="title-box">
+                                            <div class="admin">
+                                                <span class="icon-user"></span> by {{ recent_post.author }}
+                                            </div>
+                                            <h4>
+                                                <a href="{% url 'consulting:blog_details' recent_post.slug %}">
+                                                    {{ recent_post.title|truncatechars:40 }}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% empty %}
+                                <li>
+                                    <div class="inner">
+                                        <p>No recent posts available.</p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="single-sidebar-box">
+                        <div class="sidebar-title">
+                            <h3>Categories</h3>
+                        </div>
+                        <ul class="sidebar-categories-box">
+                            {% for category in categories %}
+                            <li><a href="{% url 'consulting:blog' %}?category={{ category.slug }}">{{ category.name }}</a></li>
+                            {% empty %}
+                            <li>No categories available.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--End Thm Sidebar Box-->
+        </div>
     </div>
 </section>
 <!--End Blog Page One-->

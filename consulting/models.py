@@ -171,10 +171,33 @@ class Testimonial(models.Model):
         return self.name
 
 
+class BlogCategory(models.Model):
+    """Categories for blog posts."""
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(unique=True, max_length=100)
+    description = models.TextField(blank=True)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Blog Categories"
+        ordering = ['name']
+
+
 class BlogPost(models.Model):
     """Blog posts for the consulting website."""
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, max_length=200)
+    category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE, null=True, blank=True)
     author = models.CharField(max_length=100, default='Admin')
     excerpt = models.TextField(blank=True, help_text="Short excerpt for list page")
     content = models.TextField(help_text="Full blog post content")

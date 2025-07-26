@@ -7,6 +7,7 @@ from .models import (
     Case,
     CaseKeypoint,
     Testimonial,
+    BlogCategory,
     BlogPost,
     BlogComment,
 )
@@ -144,3 +145,12 @@ class BlogCommentAdmin(admin.ModelAdmin):
     def unapprove_comments(self, request, queryset):
         queryset.update(is_approved=False)
     unapprove_comments.short_description = "Unapprove selected comments"
+
+
+@admin.register(BlogCategory)
+class BlogCategoryAdmin(admin.ModelAdmin):
+    list_display = ("name", "is_active", "created_at")
+    search_fields = ("name", "description")
+    list_filter = ("is_active",)
+    prepopulated_fields = {"slug": ("name",)}
+    readonly_fields = ("created_at", "updated_at")

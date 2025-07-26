@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from consulting.models import BlogPost
+from consulting.models import BlogPost, BlogCategory
 from django.utils import timezone
 from datetime import timedelta
 
@@ -30,6 +30,7 @@ class Command(BaseCommand):
             ),
             "image_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80",
             "days_ago": 5,
+            "category": "Consulting",
         },
         {
             "title": "Financial Restructuring: A Roadmap to Sustainable Growth",
@@ -50,6 +51,7 @@ class Command(BaseCommand):
             ),
             "image_url": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
             "days_ago": 12,
+            "category": "Business & Finance",
         },
         {
             "title": "Building High-Performance Teams in Remote Work Environments",
@@ -70,6 +72,7 @@ class Command(BaseCommand):
             ),
             "image_url": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80",
             "days_ago": 18,
+            "category": "Consulting",
         },
         {
             "title": "Supply Chain Optimization in an Uncertain World",
@@ -90,6 +93,7 @@ class Command(BaseCommand):
             ),
             "image_url": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
             "days_ago": 25,
+            "category": "Technology",
         },
         {
             "title": "Customer Experience Innovation: Beyond Digital Touchpoints",
@@ -110,6 +114,7 @@ class Command(BaseCommand):
             ),
             "image_url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
             "days_ago": 30,
+            "category": "Marketing",
         },
         {
             "title": "Data-Driven Decision Making: From Analytics to Action",
@@ -130,6 +135,7 @@ class Command(BaseCommand):
             ),
             "image_url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
             "days_ago": 35,
+            "category": "Technology",
         },
     ]
 
@@ -137,12 +143,25 @@ class Command(BaseCommand):
         created_count = 0
         now = timezone.now()
         
+        # Get default category (Consulting)
+        default_category, _ = BlogCategory.objects.get_or_create(
+            name="Consulting",
+            defaults={"description": "Strategic consulting insights and best practices.", "is_active": True}
+        )
+        
         for data in self.SAMPLE_POSTS:
             publish_date = now - timedelta(days=data["days_ago"])
+            
+            # Get or create the category
+            category, _ = BlogCategory.objects.get_or_create(
+                name=data["category"],
+                defaults={"description": f"{data['category']} related content.", "is_active": True}
+            )
             
             obj, created = BlogPost.objects.get_or_create(
                 title=data["title"],
                 defaults={
+                    "category": category,
                     "author": data["author"],
                     "excerpt": data["excerpt"],
                     "content": data["content"],

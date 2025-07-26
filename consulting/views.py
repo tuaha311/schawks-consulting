@@ -3,7 +3,8 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import TeamMember, Service, Case, Testimonial, BlogPost, BlogComment
+from django.db import models
+from .models import TeamMember, Service, Case, Testimonial, BlogPost, BlogComment, BlogCategory
 
 def home(request):
     """Home page view"""
@@ -89,16 +90,38 @@ def testimonials(request):
     return render(request, 'testimonials.html', context)
 
 def blog(request):
-    """Blog post list view"""
-    posts = BlogPost.objects.filter(is_published=True).order_by('-publish_date')
+    """Blog post list view with category filtering"""
+    category_slug = request.GET.get('category')
+    search_query = request.GET.get('search')
+    
+    posts = BlogPost.objects.filter(is_published=True)
+    
+    if category_slug:
+        posts = posts.filter(category__slug=category_slug)
+    
+    if search_query:
+        posts = posts.filter(
+            models.Q(title__icontains=search_query) |
+            models.Q(content__icontains=search_query) |
+            models.Q(excerpt__icontains=search_query)
+        )
+    
+    posts = posts.order_by('-publish_date')
+    categories = BlogCategory.objects.filter(is_active=True)
+    recent_posts = BlogPost.objects.filter(is_published=True).order_by('-publish_date')[:3]
+    
     context = {
         'page_title': 'Our Blog',
         'posts': posts,
+        'categories': categories,
+        'recent_posts': recent_posts,
+        'current_category': category_slug,
+        'search_query': search_query,
     }
     return render(request, 'blog.html', context)
 
 def blog_detail(request, slug):
-    """Blog post detail view with comments"""
+    """Blog post detail view with comments and sidebar data"""
     post = get_object_or_404(BlogPost, slug=slug, is_published=True)
     comments = post.comments.filter(is_approved=True).order_by('-created_at')
     
@@ -120,11 +143,17 @@ def blog_detail(request, slug):
         else:
             messages.error(request, 'Please fill in all required fields.')
     
+    # Sidebar data
+    categories = BlogCategory.objects.filter(is_active=True)
+    recent_posts = BlogPost.objects.filter(is_published=True).exclude(id=post.id).order_by('-publish_date')[:3]
+    
     context = {
         'page_title': post.title,
         'post': post,
         'comments': comments,
         'comment_count': comments.count(),
+        'categories': categories,
+        'recent_posts': recent_posts,
     }
     return render(request, 'blog-details.html', context)
 
