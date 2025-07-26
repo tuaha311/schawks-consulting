@@ -6,6 +6,7 @@ from .models import (
     ServiceFAQ,
     Case,
     CaseKeypoint,
+    Testimonial,
 )
 
 
@@ -106,3 +107,11 @@ class CaseAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ("created_at", "updated_at")
     inlines = (CaseKeypointInline,)
+
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ("name", "role", "is_active", "created_at")
+    search_fields = ("name", "role", "text")
+    list_filter = ("is_active",)
+    readonly_fields = ("created_at", "updated_at")

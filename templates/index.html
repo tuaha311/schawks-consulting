@@ -426,66 +426,36 @@
 <!--Start Case Stories Area-->
 <section class="case-stories-area">
     <div class="container">
-        <div class="sec-title text-center">
-            <div class="sub-title">
-                <div class="border-box"></div>
-                <h3>our recent work</h3>
-            </div>
-            <h2>Case Stories</h2>
-        </div>
         <div class="row">
-            <!--Start Case Stories Single-->
-            <div class="col-xl-6 col-lg-6">
+            {# Dynamic cases loop #}
+            {% for case in cases %}
+            <div class="col-xl-6 col-lg-6 mb-4">
                 <div class="case-stories__single">
                     <div class="img-box">
-                        <img src="/static/images/resources/case-stories-img1.jpg" alt="">
+                        {% if case.display_image %}
+                        <img src="{{ case.display_image }}" alt="{{ case.title }}" />
+                        {% endif %}
                     </div>
                     <div class="content-box">
                         <div class="top-text">
-                            <h2>Business Growth <br>Through Expert <br> Leadership</h2>
+                            {# Add <br> between words where newline present in title #}
+                            <h2>{{ case.title|linebreaksbr }}</h2>
                             <div class="line"></div>
                         </div>
                         <div class="bottom-text">
                             <div class="text">
-                                <p>When an unknown printer took a galley<br> type and it to make a type
-                                    book.
-                                </p>
+                                <p>{{ case.short_summary|truncatewords:25 }}</p>
                             </div>
                             <div class="icon">
-                                <a href="#"><span class="icon-right-arrow"></span></a>
+                                <a href="{% url 'consulting:case_details' case.slug %}"><span class="icon-right-arrow"></span></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--End Case Stories Single-->
-
-            <!--Start Case Stories Single-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="case-stories__single">
-                    <div class="img-box">
-                        <img src="/static/images/resources/case-stories-img2.jpg" alt="">
-                    </div>
-                    <div class="content-box">
-                        <div class="top-text">
-                            <h2>The Marketing<br> Advice and Risk<br> Mangement</h2>
-                            <div class="line"></div>
-                        </div>
-                        <div class="bottom-text">
-                            <div class="text">
-                                <p>When an unknown printer took a galley<br> type and it to make a type
-                                    book.
-                                </p>
-                            </div>
-                            <div class="icon">
-                                <a href="#"><span class="icon-right-arrow"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Case Stories Single-->
-
+            {% empty %}
+            <p class="text-center">No cases available at the moment.</p>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -663,85 +633,26 @@
                         }
                     }'>
 
-                        <!--Start Single Testimonial Style1-->
+                    {% for t in testimonials %}
                         <div class="single-testimonial-style1">
                             <div class="text">
-                                <p>I was impresed by the company services, not lorem ipsum is simply free
-                                    text of used. Neque porro est qui dolorem ipsum quia.</p>
+                                <p>{{ t.text }}</p>
                             </div>
                             <div class="bottom-box">
                                 <div class="client-name">
-                                    <h3>Christine Rose</h3>
-                                    <span>Customer</span>
+                                    <h3>{{ t.name }}</h3>
+                                    <span>{{ t.role }}</span>
                                 </div>
                                 <div class="client-img">
                                     <div class="inner">
-                                        <img src="/static/images/testimonial/testimonial-v1-1.jpg" alt="">
+                                        <img src="{{ t.display_image }}" alt="{{ t.name }}" style="width: 100px; height: 100px;">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--End Single Testimonial Style1-->
-
-                        <!--Start Single Testimonial Style1-->
-                        <div class="single-testimonial-style1">
-                            <div class="text">
-                                <p>I was impresed by the company services, not lorem ipsum is simply free
-                                    text of used. Neque porro est qui dolorem ipsum quia.</p>
-                            </div>
-                            <div class="bottom-box">
-                                <div class="client-name">
-                                    <h3>Mike Hardson</h3>
-                                    <span>Customer</span>
-                                </div>
-                                <div class="client-img">
-                                    <div class="inner">
-                                        <img src="/static/images/testimonial/testimonial-v1-2.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Single Testimonial Style1-->
-
-                        <!--Start Single Testimonial Style1-->
-                        <div class="single-testimonial-style1">
-                            <div class="text">
-                                <p>I was impresed by the company services, not lorem ipsum is simply free
-                                    text of used. Neque porro est qui dolorem ipsum quia.</p>
-                            </div>
-                            <div class="bottom-box">
-                                <div class="client-name">
-                                    <h3>Christine Rose</h3>
-                                    <span>Customer</span>
-                                </div>
-                                <div class="client-img">
-                                    <div class="inner">
-                                        <img src="/static/images/testimonial/testimonial-v1-1.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Single Testimonial Style1-->
-                        <!--Start Single Testimonial Style1-->
-                        <div class="single-testimonial-style1">
-                            <div class="text">
-                                <p>I was impresed by the company services, not lorem ipsum is simply free
-                                    text of used. Neque porro est qui dolorem ipsum quia.</p>
-                            </div>
-                            <div class="bottom-box">
-                                <div class="client-name">
-                                    <h3>Mike Hardson</h3>
-                                    <span>Customer</span>
-                                </div>
-                                <div class="client-img">
-                                    <div class="inner">
-                                        <img src="/static/images/testimonial/testimonial-v1-2.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Single Testimonial Style1-->
-
+                    {% empty %}
+                    <p>No testimonials available at the moment.</p>
+                    {% endfor %}
                     </div>
                 </div>
             </div>

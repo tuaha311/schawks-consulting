@@ -147,3 +147,25 @@ class CaseKeypoint(models.Model):
     
     def __str__(self):
         return f"{self.text} (Case: {self.case.title})"
+
+
+class Testimonial(models.Model):
+    """Client testimonials displayed on testimonials page."""
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100, blank=True)
+    text = models.TextField()
+    image = models.ImageField(upload_to='testimonials/', blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def display_image(self):
+        if self.image:
+            return self.image.url
+        elif self.image_url:
+            return self.image_url
+        return ''
+
+    def __str__(self):
+        return self.name

@@ -27,143 +27,32 @@
 </section>
 <!--End breadcrumb area-->
 
-
-
 <!--Start Testimonial Style1 Area-->
 <section class="testimonial-page">
     <div class="container">
         <div class="row">
-
-            <!--Start Single Testimonial Style1-->
+            {% for t in testimonials %}
             <div class="col-xl-6 col-lg-6">
                 <div class="single-testimonial-style1">
                     <div class="text">
-                        <p>I was impresed by the company services, not lorem ipsum is simply free
-                            text of used. Neque porro est qui dolorem ipsum quia.</p>
+                        <p>{{ t.text }}</p>
                     </div>
                     <div class="bottom-box">
                         <div class="client-name">
-                            <h3>Christine Rose</h3>
-                            <span>Customer</span>
+                            <h3>{{ t.name }}</h3>
+                            <span>{{ t.role }}</span>
                         </div>
                         <div class="client-img">
                             <div class="inner">
-                                <img src="/static/images/testimonial/testimonial-v1-1.jpg" alt="">
+                                <img src="{{ t.display_image }}" alt="{{ t.name }}" style="width: 100px; height: 100px;">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--End Single Testimonial Style1-->
-            <!--Start Single Testimonial Style1-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="single-testimonial-style1">
-                    <div class="text">
-                        <p>I was impresed by the company services, not lorem ipsum is simply free
-                            text of used. Neque porro est qui dolorem ipsum quia.</p>
-                    </div>
-                    <div class="bottom-box">
-                        <div class="client-name">
-                            <h3>Mike Hardson</h3>
-                            <span>Customer</span>
-                        </div>
-                        <div class="client-img">
-                            <div class="inner">
-                                <img src="/static/images/testimonial/testimonial-v1-2.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Testimonial Style1-->
-
-            <!--Start Single Testimonial Style1-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="single-testimonial-style1">
-                    <div class="text">
-                        <p>I was impresed by the company services, not lorem ipsum is simply free
-                            text of used. Neque porro est qui dolorem ipsum quia.</p>
-                    </div>
-                    <div class="bottom-box">
-                        <div class="client-name">
-                            <h3>Christine Rose</h3>
-                            <span>Customer</span>
-                        </div>
-                        <div class="client-img">
-                            <div class="inner">
-                                <img src="/static/images/testimonial/testimonial-v1-3.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Testimonial Style1-->
-            <!--Start Single Testimonial Style1-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="single-testimonial-style1">
-                    <div class="text">
-                        <p>I was impresed by the company services, not lorem ipsum is simply free
-                            text of used. Neque porro est qui dolorem ipsum quia.</p>
-                    </div>
-                    <div class="bottom-box">
-                        <div class="client-name">
-                            <h3>Mike Hardson</h3>
-                            <span>Customer</span>
-                        </div>
-                        <div class="client-img">
-                            <div class="inner">
-                                <img src="/static/images/testimonial/testimonial-v1-4.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Testimonial Style1-->
-
-            <!--Start Single Testimonial Style1-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="single-testimonial-style1">
-                    <div class="text">
-                        <p>I was impresed by the company services, not lorem ipsum is simply free
-                            text of used. Neque porro est qui dolorem ipsum quia.</p>
-                    </div>
-                    <div class="bottom-box">
-                        <div class="client-name">
-                            <h3>Christine Rose</h3>
-                            <span>Customer</span>
-                        </div>
-                        <div class="client-img">
-                            <div class="inner">
-                                <img src="/static/images/testimonial/testimonial-v1-5.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Testimonial Style1-->
-            <!--Start Single Testimonial Style1-->
-            <div class="col-xl-6 col-lg-6">
-                <div class="single-testimonial-style1">
-                    <div class="text">
-                        <p>I was impresed by the company services, not lorem ipsum is simply free
-                            text of used. Neque porro est qui dolorem ipsum quia.</p>
-                    </div>
-                    <div class="bottom-box">
-                        <div class="client-name">
-                            <h3>Mike Hardson</h3>
-                            <span>Customer</span>
-                        </div>
-                        <div class="client-img">
-                            <div class="inner">
-                                <img src="/static/images/testimonial/testimonial-v1-6.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Testimonial Style1-->
-
-
+            {% empty %}
+            <p>No testimonials available at the moment.</p>
+            {% endfor %}
         </div>
     </div>
 </section>

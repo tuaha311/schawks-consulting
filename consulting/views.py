@@ -3,15 +3,18 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import TeamMember, Service, Case
+from .models import TeamMember, Service, Case, Testimonial
 
 def home(request):
     """Home page view"""
-    # Example context - update with your actual data
+    cases_qs = Case.objects.filter(is_published=True).order_by('-case_date', '-created_at')[:2]
+    testimonials_qs = Testimonial.objects.filter(is_active=True)
     context = {
         'page_title': 'Home',
         'hero_title': 'Strategic Consulting for Business Growth',
         'hero_subtitle': 'Expert solutions for your business challenges',
+        'cases': cases_qs,
+        'testimonials': testimonials_qs,
     }
     return render(request, 'index.html', context)
 
@@ -78,10 +81,10 @@ def team(request):
 
 def testimonials(request):
     """Testimonials view"""
-    # testimonials = Testimonial.objects.filter(is_active=True)
+    testimonials_qs = Testimonial.objects.filter(is_active=True)
     context = {
         'page_title': 'Testimonials',
-        # 'testimonials': testimonials,
+        'testimonials': testimonials_qs,
     }
     return render(request, 'testimonials.html', context)
 
