@@ -169,3 +169,53 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BlogPost(models.Model):
+    """Blog posts for the consulting website."""
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, max_length=200)
+    author = models.CharField(max_length=100, default='Admin')
+    excerpt = models.TextField(blank=True, help_text="Short excerpt for list page")
+    content = models.TextField(help_text="Full blog post content")
+    image = models.ImageField(upload_to='blog/', blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True)
+    publish_date = models.DateTimeField()
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def display_image(self):
+        if self.image:
+            return self.image.url
+        elif self.image_url:
+            return self.image_url
+        return ''
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-publish_date']
+
+
+class BlogComment(models.Model):
+    """Comments on blog posts."""
+    blog_post = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    comment = models.TextField()
+    is_approved = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Comment by {self.name} on {self.blog_post.title}"
+
+    class Meta:
+        ordering = ['-created_at']

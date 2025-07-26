@@ -1,17 +1,6 @@
 {% extends "base.html" %} {% block title %}Home - Axial Consulting{% endblock %}
 {% block content %}
 <div class="boxed_wrapper ltr">
-  <!-- page-direction -->
-  <div class="page_direction">
-    <div class="demo-rtl direction_switch">
-      <button class="rtl">RTL</button>
-    </div>
-    <div class="demo-ltr direction_switch">
-      <button class="ltr">LTR</button>
-    </div>
-  </div>
-  <!-- page-direction end -->
-
   <!-- switcher menu -->
   <div class="switcher">
     <div class="switch_btn">
@@ -112,51 +101,31 @@
             <!--Start Single Blog Style2-->
             <div class="single-blog-style1 single-blog-style1--in-style2">
               <div class="img-holder">
-                <img src="/static/images/blog/blog-details-img-1.jpg" alt="" />
+                {% if post.display_image %}
+                <img src="{{ post.display_image }}" alt="{{ post.title }}" />
+                {% endif %}
                 <div class="date-box">
-                  <p>20 oct</p>
+                  <p>{{ post.publish_date|date:'d M' }}</p>
                 </div>
               </div>
               <div class="text-holder">
                 <div class="meta-info">
                   <ul>
                     <li>
-                      <span class="icon-user"></span><a href="#">by Admin</a>
+                      <span class="icon-user"></span><a href="#">by {{ post.author }}</a>
                     </li>
                     <li>
                       <span class="icon-conversation"></span
-                      ><a href="#">2 Comments</a>
+                      ><a href="#">{{ comment_count }} Comment{{ comment_count|pluralize }}</a>
                     </li>
                   </ul>
                 </div>
-                <h3>Accounting Support During the Exponential Growth</h3>
+                <h3>{{ post.title }}</h3>
                 <div class="text">
-                  <p>
-                    There are not many of passages of lorem ipsum available
-                    alteration in some form. Donec scelerisque dolor id nunc
-                    dictum, interdum gravida. Sed malesuada quis tellus
-                    consequat posuere. Integer efficitur ut arcu ac placerat.
-                    Suspendisse pharetra justo et ante consectetur, non
-                    scelerisque enim imperdiet. Suspendisse aliquet congue
-                    facilisis. In varius neque at gravida posuere. Vivamus a
-                    enim quis nunc lacinia sagittis. Curabitur hendrerit
-                    placerat massa, in vestibulum est sodales eget. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit. Maecenas at
-                    maximus dui. Aenean maximus venenatis orci ut ullamcorper.
-                    Fusce consequat lectus nec ligula laoreet pretium ac nec
-                    libero. Nullam ut tempor urna.
-                  </p>
-
-                  <p>
-                    Ut gravida felis vitae mauris suscipit, at facilisis mauris
-                    varius. Curabitur interdum malesuada vestibulum. Phasellus
-                    augue sapien, euismod ut pharetra ut, tincidunt non metus.
-                    Aliquam erat volutpat. Integer egestas maximus bibendum.
-                    Curabitur facilisis accumsan risus, vel euismod elit
-                    accumsan sit amet. Suspendisse porttitor, ipsum vel sagittis
-                    pharetra, nisi purus dignissim velit, sed lobortis sapien
-                    ante vitae risus.
-                  </p>
+                  {% if post.excerpt %}
+                  <p><strong>{{ post.excerpt }}</strong></p>
+                  {% endif %}
+                  {{ post.content|linebreaks }}
                 </div>
               </div>
             </div>
@@ -218,83 +187,58 @@
 
             <div class="comment-box">
               <div class="inner-title">
-                <h2>2 Comments</h2>
+                <h2>{{ comment_count }} Comment{{ comment_count|pluralize }}</h2>
               </div>
+              {% if comments %}
               <div class="outer-box">
                 <div class="row">
                   <div class="col-md-12">
+                    {% for comment in comments %}
                     <!--Start single comment-->
                     <div class="single-comment">
                       <div class="single-comment-box">
                         <div class="img-holder">
                           <img
-                            src="/static/images/blog/comment-1.jpg"
-                            alt="Awesome Image"
+                            src="https://ui-avatars.com/api/?name={{ comment.name|urlencode }}&background=0d7377&color=fff&size=80"
+                            alt="{{ comment.name }}"
                           />
                         </div>
                         <div class="text-holder">
                           <div class="top">
                             <div class="name">
-                              <h3>Kevin Martin</h3>
-                            </div>
-                            <div class="reply">
-                              <a href="#">Reply</a>
+                              <h3>{{ comment.name }}</h3>
+                              <small class="text-muted">{{ comment.created_at|date:'M d, Y \a\t g:i A' }}</small>
                             </div>
                           </div>
                           <div class="text">
-                            <p>
-                              Lorem ipsum is simply free text used by copytyping
-                              refreshing. Neque porro est qui dolorem ipsum quia
-                              quaed inventore veritatis et quasi architecto
-                              beatae vitae dicta sunt explicabo porro est qui
-                              dolorem.
-                            </p>
+                            <p>{{ comment.comment|linebreaks }}</p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <!--End single comment-->
-                    <!--Start single comment-->
-                    <div class="single-comment">
-                      <div class="single-comment-box">
-                        <div class="img-holder">
-                          <img
-                            src="/static/images/blog/comment-2.jpg"
-                            alt="Awesome Image"
-                          />
-                        </div>
-                        <div class="text-holder">
-                          <div class="top">
-                            <div class="name">
-                              <h3>Sarah Albert</h3>
-                            </div>
-                            <div class="reply">
-                              <a href="#">Reply</a>
-                            </div>
-                          </div>
-                          <div class="text">
-                            <p>
-                              Lorem ipsum is simply free text used by copytyping
-                              refreshing. Neque porro est qui dolorem ipsum quia
-                              quaed inventore veritatis et quasi architecto
-                              beatae vitae dicta sunt explicabo porro est qui
-                              dolorem.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--End single comment-->
+                    {% endfor %}
                   </div>
                 </div>
               </div>
+              {% else %}
+              <p>No comments yet. Be the first to comment!</p>
+              {% endif %}
             </div>
 
             <div class="add-comment-box">
               <div class="inner-title">
                 <h2>Leave a Comment</h2>
               </div>
-              <form id="add-comment-form" action="#">
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert alert-{{ message.tags }} mb-3">
+                    {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+              <form id="add-comment-form" method="post">
+                {% csrf_token %}
                 <div class="row">
                   <div class="col-md-12">
                     <div class="row">
@@ -302,10 +246,10 @@
                         <div class="input-box">
                           <input
                             type="text"
-                            name="fname"
+                            name="name"
                             value=""
                             placeholder="Your name"
-                            required=""
+                            required
                           />
                         </div>
                       </div>
@@ -313,10 +257,10 @@
                         <div class="input-box">
                           <input
                             type="email"
-                            name="femail"
+                            name="email"
                             value=""
                             placeholder="Email address"
-                            required=""
+                            required
                           />
                         </div>
                       </div>
@@ -325,9 +269,9 @@
                       <div class="col-md-12">
                         <div class="input-box">
                           <textarea
-                            name="fcomments"
-                            placeholder="Write message"
-                            required=""
+                            name="comment"
+                            placeholder="Write your comment here..."
+                            required
                           ></textarea>
                         </div>
                       </div>

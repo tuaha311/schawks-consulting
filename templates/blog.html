@@ -10,7 +10,6 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="inner-content">
-
                     <div class="breadcrumb-menu">
                         <ul>
                             <li><a href="{% url 'consulting:home' %}">Home</a></li>
@@ -31,167 +30,40 @@
 <section class="blog-page-one">
     <div class="container">
         <div class="row">
-
-            <!--Start Single Blog Style1-->
+            {% for post in posts %}
             <div class="col-xl-4 col-lg-6">
                 <div class="single-blog-style1">
                     <div class="img-holder">
-                        <img src="/static/images/blog/blog-v1-1.jpg" alt="">
+                        {% if post.display_image %}
+                        <img src="{{ post.display_image }}" alt="{{ post.title }}">
+                        {% endif %}
                         <div class="date-box">
-                            <p>20 oct</p>
+                            <p>{{ post.publish_date|date:'d M' }}</p>
                         </div>
                     </div>
                     <div class="text-holder">
                         <div class="meta-info">
                             <ul>
-                                <li><span class="icon-user"></span><a href="#">by Admin</a></li>
-                                <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
+                                <li><span class="icon-user"></span><a href="#">by {{ post.author }}</a></li>
+                                <li><span class="icon-conversation"></span><a href="#">Comments</a></li>
                             </ul>
                         </div>
-                        <h3><a href="{% url 'consulting:blog_details' 1 %}">Accounting Support During the Exponential Growth</a></h3>
+                        <h3><a href="{% url 'consulting:blog_details' post.slug %}">{{ post.title }}</a></h3>
+                        {% if post.excerpt %}
+                        <p>{{ post.excerpt|truncatewords:20 }}</p>
+                        {% endif %}
                         <div class="btn-box">
-                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
+                            <a href="{% url 'consulting:blog_details' post.slug %}">Read More</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--End Single Blog Style1-->
-            <!--Start Single Blog Style1-->
-            <div class="col-xl-4 col-lg-6">
-                <div class="single-blog-style1">
-                    <div class="img-holder">
-                        <img src="/static/images/blog/blog-v1-2.jpg" alt="">
-                        <div class="date-box">
-                            <p>15 oct</p>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-info">
-                            <ul>
-                                <li><span class="icon-user"></span><a href="#">by Admin</a></li>
-                                <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
-                            </ul>
-                        </div>
-                        <h3><a href="{% url 'consulting:blog_details' 1 %}">How to Manage Your Business’s Online Reputation</a></h3>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Blog Style1-->
-            <!--Start Single Blog Style1-->
-            <div class="col-xl-4 col-lg-6">
-                <div class="single-blog-style1">
-                    <div class="img-holder">
-                        <img src="/static/images/blog/blog-v1-3.jpg" alt="">
-                        <div class="date-box">
-                            <p>10 oct</p>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-info">
-                            <ul>
-                                <li><span class="icon-user"></span><a href="#">by Admin</a></li>
-                                <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
-                            </ul>
-                        </div>
-                        <h3><a href="{% url 'consulting:blog_details' 1 %}">If You Want to be a Great Leader Shut Up and Just
-                                Listen</a></h3>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Blog Style1-->
-
-            <!--Start Single Blog Style1-->
-            <div class="col-xl-4 col-lg-6">
-                <div class="single-blog-style1">
-                    <div class="img-holder">
-                        <img src="/static/images/blog/blog-v1-4.jpg" alt="">
-                        <div class="date-box">
-                            <p>20 oct</p>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-info">
-                            <ul>
-                                <li><span class="icon-user"></span><a href="#">by Admin</a></li>
-                                <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
-                            </ul>
-                        </div>
-                        <h3><a href="{% url 'consulting:blog_details' 1 %}">Accounting Support During the Exponential Growth</a></h3>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Blog Style1-->
-            <!--Start Single Blog Style1-->
-            <div class="col-xl-4 col-lg-6">
-                <div class="single-blog-style1">
-                    <div class="img-holder">
-                        <img src="/static/images/blog/blog-v1-5.jpg" alt="">
-                        <div class="date-box">
-                            <p>15 oct</p>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-info">
-                            <ul>
-                                <li><span class="icon-user"></span><a href="#">by Admin</a></li>
-                                <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
-                            </ul>
-                        </div>
-                        <h3><a href="{% url 'consulting:blog_details' 1 %}">How to Manage Your Business’s Online Reputation</a></h3>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Blog Style1-->
-            <!--Start Single Blog Style1-->
-            <div class="col-xl-4 col-lg-6">
-                <div class="single-blog-style1">
-                    <div class="img-holder">
-                        <img src="/static/images/blog/blog-v1-6.jpg" alt="">
-                        <div class="date-box">
-                            <p>10 oct</p>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-info">
-                            <ul>
-                                <li><span class="icon-user"></span><a href="#">by Admin</a></li>
-                                <li><span class="icon-conversation"></span><a href="#">2 Comments</a></li>
-                            </ul>
-                        </div>
-                        <h3><a href="{% url 'consulting:blog_details' 1 %}">If You Want to be a Great Leader Shut Up and Just
-                                Listen</a></h3>
-                        <div class="btn-box">
-                            <a href="{% url 'consulting:blog_details' 1 %}">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Blog Style1-->
-        </div>
-        <div class="row">
+            {% empty %}
             <div class="col-xl-12">
-                <ul class="styled-pagination text-center clearfix">
-                    <li class="arrow prev"><a href="#"><span class="icon-right-arrow left"></span></a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li class="arrow next"><a href="#"><span class="icon-right-arrow"></span></a></li>
-                </ul>
+                <p class="text-center">No blog posts available at the moment.</p>
             </div>
+            {% endfor %}
         </div>
-
     </div>
 </section>
 <!--End Blog Page One-->

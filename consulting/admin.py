@@ -7,6 +7,8 @@ from .models import (
     Case,
     CaseKeypoint,
     Testimonial,
+    BlogPost,
+    BlogComment,
 )
 
 
@@ -115,3 +117,30 @@ class TestimonialAdmin(admin.ModelAdmin):
     search_fields = ("name", "role", "text")
     list_filter = ("is_active",)
     readonly_fields = ("created_at", "updated_at")
+
+
+@admin.register(BlogPost)
+class BlogPostAdmin(admin.ModelAdmin):
+    list_display = ("title", "author", "publish_date", "is_published")
+    search_fields = ("title", "author", "content")
+    list_filter = ("is_published", "publish_date", "author")
+    prepopulated_fields = {"slug": ("title",)}
+    readonly_fields = ("created_at", "updated_at")
+    date_hierarchy = "publish_date"
+
+
+@admin.register(BlogComment)
+class BlogCommentAdmin(admin.ModelAdmin):
+    list_display = ("name", "blog_post", "is_approved", "created_at")
+    search_fields = ("name", "email", "comment")
+    list_filter = ("is_approved", "created_at", "blog_post")
+    readonly_fields = ("created_at", "updated_at")
+    actions = ['approve_comments', 'unapprove_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(is_approved=True)
+    approve_comments.short_description = "Approve selected comments"
+
+    def unapprove_comments(self, request, queryset):
+        queryset.update(is_approved=False)
+    unapprove_comments.short_description = "Unapprove selected comments"
