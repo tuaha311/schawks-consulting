@@ -90,6 +90,10 @@
   content: "\e90d";
 }
 
+.icon-linkedin:before {
+  content: "\e90e";
+}
+
 .icon-email:before {
   content: "\e90e";
 }

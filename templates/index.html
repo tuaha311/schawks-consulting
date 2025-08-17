@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Home - Axial Consulting{% endblock %}
+{% block title %}Home - Schawks Consulting{% endblock %}
 {% block content %}
 <!-- Start Main Slider -->
 <section class="main-slider style1">
@@ -14,9 +14,9 @@
                 <div class="auto-container">
                     <div class="content">
                         <div class="big-title">
-                            <h2>
-                                Consulting<span class="dotted"></span><br>
-                                Financial<span class="dotted"></span><br>
+                            <h2 style="font-size: 75px; height: 100%; min-height: 34vh;">
+                                Capital<span class="dotted"></span><br>
+                                Structure<span class="dotted"></span><br>
                                 Advice<span class="dotted"></span>
                             </h2>
                         </div>
@@ -38,10 +38,10 @@
                 <div class="auto-container">
                     <div class="content">
                         <div class="big-title">
-                            <h2>
-                                Sultin Best<span class="dotted"></span><br>
-                                Consulting<span class="dotted"></span><br>
-                                Services<span class="dotted"></span>
+                            <h2 style="font-size: 60px; height: 100%; min-height: 34vh;">
+                                A Boutique corporate finance and capital advisory firm for Startups, Investors, Businesses and Investment firms<span class="dotted"></span><br>
+                                <span class=""></span><br>
+                                <span class=""></span>
                             </h2>
                         </div>
                         <div class="btns-box">
@@ -62,9 +62,9 @@
                 <div class="auto-container">
                     <div class="content">
                         <div class="big-title">
-                            <h2>
-                                Consulting<span class="dotted"></span><br>
-                                Financial<span class="dotted"></span><br>
+                            <h2 style="font-size: 75px; height: 100%; min-height: 34vh;">
+                                Capital<span class="dotted"></span><br>
+                                Structure<span class="dotted"></span><br>
                                 Advice<span class="dotted"></span>
                             </h2>
                         </div>
@@ -86,9 +86,9 @@
 
 <!--Start Service Style1 Area-->
 <section class="service-style1-area">
-    <div class="container">
+    <div style="margin-left: 3rem; margin-right:3rem;">
         <div class="row">
-            <div class="col-xl-5">
+            <div class="col-xl-4">
                 <div class="service-style1__title">
                     <div class="sec-title sec-title--style2">
                         <div class="sub-title">
@@ -98,11 +98,11 @@
                         <h2>Services We’re<br> Offering</h2>
                     </div>
                     <div class="inner-text">
-                        <p>There are many variations of passages of lorem ipsum available but the majority have
-                            suffered in some form by injected humour.</p>
+                        <p>At Schawks, we help founders, investors, SMBs, and investment firms make smarter capital decisions, make them deal ready - with precision, structure, and strategy.</br>
+                            Whether you're raising your first round, scaling your business, or navigating a complex transaction, our services are designed to guide you from uncertainty to investor-readiness and deal closure.</p>
                     </div>
 
-                    <div class="video-holder-box">
+                    {% comment %} <div class="video-holder-box">
                         <div class="video-gallery-style1">
                             <div class="video-gallery-style1__bg"
                                 style="background-image: url(/static/images/resources/video-gallery-style1-bg.jpg);">
@@ -122,16 +122,16 @@
                                 Watch Video
                             </a>
                         </div>
-                    </div>
+                    </div> {% endcomment %}
 
                 </div>
             </div>
 
-            <div class="col-xl-7">
+            <div class="col-xl-8">
                 <div class="service-style1__content">
                     <div class="row">
                         <!--Start Single Service Style1-->
-                        <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="col-xl-4 col-lg-4 col-md-4">
                             <div class="single-service-style1">
                                 <div class="shape-box"></div>
                                 <div class="icon-holder">
@@ -139,14 +139,14 @@
                                 </div>
                                 <div class="title-holder">
                                     <h3>
-                                        <a href="{% url 'consulting:service_details' 1 %}">Business<br> Growth</a>
+                                        <a href="{% url 'consulting:service_details' 1 %}">Transaction<br> Advisory</a>
                                     </h3>
                                 </div>
                             </div>
                         </div>
                         <!--End Single Service Style1-->
                         <!--Start Single Service Style1-->
-                        <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="col-xl-4 col-lg-4 col-md-4">
                             <div class="single-service-style1">
                                 <div class="shape-box"></div>
                                 <div class="icon-holder">
@@ -154,29 +154,14 @@
                                 </div>
                                 <div class="title-holder">
                                     <h3>
-                                        <a href="{% url 'consulting:service_details' 1 %}">Marketing<br> Rules</a>
+                                        <a href="{% url 'consulting:service_details' 1 %}">Investment<br> Research</a>
                                     </h3>
                                 </div>
                             </div>
                         </div>
                         <!--End Single Service Style1-->
                         <!--Start Single Service Style1-->
-                        <div class="col-xl-6 col-lg-6 col-md-6">
-                            <div class="single-service-style1">
-                                <div class="shape-box"></div>
-                                <div class="icon-holder">
-                                    <span class="icon-business"></span>
-                                </div>
-                                <div class="title-holder">
-                                    <h3>
-                                        <a href="{% url 'consulting:service_details' 1 %}">Financial<br> Advice</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Single Service Style1-->
-                        <!--Start Single Service Style1-->
-                        <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="col-xl-4 col-lg-4 col-md-4">
                             <div class="single-service-style1">
                                 <div class="shape-box"></div>
                                 <div class="icon-holder">
@@ -184,7 +169,52 @@
                                 </div>
                                 <div class="title-holder">
                                     <h3>
-                                        <a href="{% url 'consulting:service_details' 1 %}">Banking<br> Safe</a>
+                                        <a href="{% url 'consulting:service_details' 1 %}">Capital Strategy<br> And Fundraising</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Single Service Style1-->
+                        <!--Start Single Service Style1-->
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="single-service-style1">
+                                <div class="shape-box"></div>
+                                <div class="icon-holder">
+                                    <span class="icon-business"></span>
+                                </div>
+                                <div class="title-holder">
+                                    <h3>
+                                        <a href="{% url 'consulting:service_details' 1 %}">M&A<br> Investment Advisory</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Single Service Style1-->
+                        <!--Start Single Service Style1-->
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="single-service-style1">
+                                <div class="shape-box"></div>
+                                <div class="icon-holder">
+                                    <span class="icon-protection"></span>
+                                </div>
+                                <div class="title-holder">
+                                    <h3>
+                                        <a href="{% url 'consulting:service_details' 1 %}">Project Finance<br> Structured Capital</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Single Service Style1-->
+                        <!--Start Single Service Style1-->
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="single-service-style1">
+                                <div class="shape-box"></div>
+                                <div class="icon-holder">
+                                    <span class="icon-business"></span>
+                                </div>
+                                <div class="title-holder">
+                                    <h3>
+                                        <a href="{% url 'consulting:service_details' 1 %}">Fractional<br> CFO Services</a>
                                     </h3>
                                 </div>
                             </div>
@@ -201,12 +231,12 @@
 <!--End Service Style1 Area-->
 
 <!--Start About Style1 Area-->
-<section class="about-style1-area">
+{% comment %} <section class="about-style1-area">
     <div class="container">
         <div class="sec-title text-center">
             <div class="sub-title">
                 <div class="border-box"></div>
-                <h3>our introductions</h3>
+                <h3>who we serve</h3>
             </div>
             <h2>We’re Providing the<br> Best Solution by our Expert</h2>
         </div>
@@ -301,7 +331,7 @@
 
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 <!--End About Style1 Area-->
 
 <!--Start Slogan Style3 Area-->
@@ -327,7 +357,7 @@
                 <div class="border-box"></div>
                 <h3>our work process</h3>
             </div>
-            <h2>How We Works</h2>
+            <h2>How We Work</h2>
         </div>
         <div class="row">
 
@@ -338,15 +368,14 @@
                     <div class="working-process__single-inner">
                         <div class="img-holder">
                             <div class="inner">
-                                <img style="min-height: 100px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1h1UPFvgFPvQ2aGNVnR6wGBxUrdhP4SzzPmL9ZwljWBJzcOQFwpwVercm9t7XXFPbqsnDwWsG3a9S6_vUm24SopgquUMg06qbFs8wsQ9hbTYGIPmLp53zsVklSrMR4V4G5TM9AHNWAp8U_6hIK_t02GoFHh4Q9V9tQj0MFQT0_dmww6u-Xanuh0IJtAU/s190/%E2%80%94Pngtree%E2%80%94financial%20consulting%20concept%20with%20characters_5334448-removebg-preview.jpg" alt="" style="min-height: 190px; min-width: 190px;" />
+                                <img style="min-height: 190px; max-height: 190px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1h1UPFvgFPvQ2aGNVnR6wGBxUrdhP4SzzPmL9ZwljWBJzcOQFwpwVercm9t7XXFPbqsnDwWsG3a9S6_vUm24SopgquUMg06qbFs8wsQ9hbTYGIPmLp53zsVklSrMR4V4G5TM9AHNWAp8U_6hIK_t02GoFHh4Q9V9tQj0MFQT0_dmww6u-Xanuh0IJtAU/s190/%E2%80%94Pngtree%E2%80%94financial%20consulting%20concept%20with%20characters_5334448-removebg-preview.jpg" alt="" style="min-height: 190px; max-height: 190px; min-width: 190px;" />
                             </div>
                             <div class="counting"></div>
                         </div>
 
                         <div class="content-box text-center">
-                            <h3><a href="#">Meet Consultant</a></h3>
-                            <p>Lorem Ipsum is simply free <br>dumy text of the printing<br> and amet con
-                                piscing.</p>
+                            <h3><a href="#">Discovery and Initial Consultation</a></h3>
+                            <p>We begin with a one-on-one consultation to understand your business, service & capital requirements, and strategic goals. This helps us align our expertise with your vision.</p>
                         </div>
                     </div>
                 </div>
@@ -360,15 +389,14 @@
                     <div class="working-process__single-inner">
                         <div class="img-holder">
                             <div class="inner">
-                                <img style="min-height: 100px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg365WVWl9Gdz6HQtnmHL8pHcOa79QZnOCPeNIQs3sAyhqbmpjJ0SpI2rncA0pq6A771KCOgkn9UJaQkBXrIbe7554OEfWWxsn2uaa6FBfzu-EX58qW37lJtoCNYVcc3PKLRBx7d3VB9yjoc5_zH6E8M1GmabdRG1GIR8PUYo7ei0R_dIIkH_-hqM0beUI/s190/%E2%80%94Pngtree%E2%80%94competition%20contest%20expert%20judge%20jury_4437154-removebg-preview.jpg" alt="" style="min-height: 190px; min-width: 190px;"/>
+                                <img style="min-height: 190px; max-height: 190px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg365WVWl9Gdz6HQtnmHL8pHcOa79QZnOCPeNIQs3sAyhqbmpjJ0SpI2rncA0pq6A771KCOgkn9UJaQkBXrIbe7554OEfWWxsn2uaa6FBfzu-EX58qW37lJtoCNYVcc3PKLRBx7d3VB9yjoc5_zH6E8M1GmabdRG1GIR8PUYo7ei0R_dIIkH_-hqM0beUI/s190/%E2%80%94Pngtree%E2%80%94competition%20contest%20expert%20judge%20jury_4437154-removebg-preview.jpg" alt="" style="min-height: 190px; max-height: 190px; min-width: 190px;"/>
                             </div>
                             <div class="counting"></div>
                         </div>
 
                         <div class="content-box text-center">
-                            <h3><a href="#">Expert Advice</a></h3>
-                            <p>Lorem Ipsum is simply free <br>dumy text of the printing<br> and amet con
-                                piscing.</p>
+                            <h3><a href="#">Engagement Agreement</a></h3>
+                            <p>Once we’ve identified a mutual fit, we formalize the relationship with a clearly outlined engagement agreement – covering scope of work, deliverables, timelines, and fees.</p>
                         </div>
                     </div>
                 </div>
@@ -381,15 +409,14 @@
                     <div class="working-process__single-inner">
                         <div class="img-holder">
                             <div class="inner">
-                                <img style="min-height: 100px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTczDjOtXfztdEOV6rWyVvY6wh57vAvlMoDuKjKfXjcSnPaxiiyRrp8DJOAji6H0q_ojqpEd5uLLp7htMBIPv6K8bMS4jtWht733IKRpvQU4YHUAfyA9oN0vDLnpFz0Aa_MBuWpiRUrgfk6CixDmfPIl8D1QHfvyNHTWviuQfP_idPRUuFudBaaqs4hTs/s190/Screenshot%20from%202025-07-26%2016-18-22-removebg-preview.jpg" alt="" style="min-height: 190px; min-width: 190px;" />
+                                <img style="min-height: 190px; max-height: 190px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTczDjOtXfztdEOV6rWyVvY6wh57vAvlMoDuKjKfXjcSnPaxiiyRrp8DJOAji6H0q_ojqpEd5uLLp7htMBIPv6K8bMS4jtWht733IKRpvQU4YHUAfyA9oN0vDLnpFz0Aa_MBuWpiRUrgfk6CixDmfPIl8D1QHfvyNHTWviuQfP_idPRUuFudBaaqs4hTs/s190/Screenshot%20from%202025-07-26%2016-18-22-removebg-preview.jpg" alt="" style="min-height: 190px; max-height: 190px; min-width: 190px;" />
                             </div>
                             <div class="counting"></div>
                         </div>
 
                         <div class="content-box text-center">
-                            <h3><a href="#">Proper Solution</a></h3>
-                            <p>Lorem Ipsum is simply free <br>dumy text of the printing<br> and amet con
-                                piscing.</p>
+                            <h3><a href="#">Strategic Execution Planning</a></h3>
+                            <p>Our team dives into the work whether it’s financial modeling, investor outreach, deal structuring, fundraising or transaction support. You’ll receive regular updates and strategic insights throughout the process.</p>
                         </div>
                     </div>
                 </div>
@@ -402,15 +429,14 @@
                     <div class="working-process__single-inner">
                         <div class="img-holder">
                             <div class="inner">
-                                <img style="min-height: 100px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjx-7uyNPUc3tzYIjM_JfKHfaOiXA9Dk3KxoXlN-Lqvj7DJkP1qgQscaYac7deesqojT6VO9TmsAgfz5SQ7ETLp6sb0-mjtxTw9SYk_z3pJqrpNEm5xdgZmlbo2s1sU64uY2FGUVWaGHaKmBvbiWk1G_Xwj2sfkNsaOIJCwR8qSQFrdlPT7KWaYNXtQR3g/s190/Screenshot%20from%202025-07-26%2016-21-30-removebg-preview.jpg" alt="" style="min-height: 190px; min-width: 190px;" />
+                                <img style="min-height: 190px; max-height: 190px;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjx-7uyNPUc3tzYIjM_JfKHfaOiXA9Dk3KxoXlN-Lqvj7DJkP1qgQscaYac7deesqojT6VO9TmsAgfz5SQ7ETLp6sb0-mjtxTw9SYk_z3pJqrpNEm5xdgZmlbo2s1sU64uY2FGUVWaGHaKmBvbiWk1G_Xwj2sfkNsaOIJCwR8qSQFrdlPT7KWaYNXtQR3g/s190/Screenshot%20from%202025-07-26%2016-21-30-removebg-preview.jpg" alt="" style="min-height: 190px; max-height: 190px; min-width: 190px;" />
                             </div>
                             <div class="counting"></div>
                         </div>
 
                         <div class="content-box text-center">
-                            <h3><a href="#">Business Grow</a></h3>
-                            <p>Lorem Ipsum is simply free <br>dumy text of the printing<br> and amet con
-                                piscing.</p>
+                            <h3><a href="#">Delivery and Value Creation</a></h3>
+                            <p>We deliver high-impact solutions tailored to your needs, ensuring real business outcomes, whether it’s capital raised, valuation advisory, or operational efficiency. We aim to become your long-term partner in growth.</p>
                         </div>
                     </div>
                 </div>
@@ -431,12 +457,30 @@
                 <div class="border-box"></div>
                 <h3>our recent work</h3>
             </div>
-            <h2>Case Stories</h2>
+            <h2>Case Studies</h2>
         </div>
-        <div class="row">
+        <div class="case-stories-carousel theme_carousel owl-theme owl-carousel" data-options='{
+                            "loop": true,
+                            "margin": 30,
+                            "autoheight": true,
+                            "lazyload": true,
+                            "nav": false,
+                            "dots": false,
+                            "autoplay": true,
+                            "autoplayTimeout": 5000,
+                            "smartSpeed": 500,
+                            "navText": ["<span class=\"left icon-next\"></span>",
+                            "<span class=\"right icon-next\"></span>"],
+                            "responsive":{
+                                "0":   { "items": "1" },
+                                "600": { "items": "1" },
+                                "768": { "items": "1" },
+                                "992": { "items": "2" },
+                                "1200":{ "items": "2" }
+                            }
+                        }'>
             {# Dynamic cases loop #}
             {% for case in cases %}
-            <div class="col-xl-6 col-lg-6 mb-4">
                 <div class="case-stories__single">
                     <div class="img-box">
                         {% if case.display_image %}
@@ -459,9 +503,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
             {% empty %}
-            <p class="text-center">No cases available at the moment.</p>
+                <div class="text-center">
+                    <p>No cases available at the moment.</p>
+                </div>
             {% endfor %}
         </div>
     </div>
@@ -479,11 +524,13 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="slogan-text-box">
+                    {% comment %} <span
+                            style="background-image: url(/static/images/shape/zig-zag.png);"> {% endcomment %}
                     <h2 class="paroller">We Provide <span
-                            style="background-image: url(/static/images/shape/zig-zag.png);">Best</span><br>
-                        Finance & Consulting<br> Services</h2>
+                            style="">'The Best'</span><br>
+                        Consulting Services</h2>
                     <div class="slogan-btn-box paroller">
-                        <a class="btn-one" href="{% url 'consulting:about' %}">
+                        <a class="btn-one" href="{% url 'consulting:services' %}">
                             <span class="txt">Discover More</span>
                         </a>
                     </div>
@@ -491,8 +538,8 @@
                     <div class="parallax-scene parallax-scene-1">
                         <div data-depth="0.20" class="parallax-layer shape">
                             <div class="experience-box">
-                                <h2>30</h2>
-                                <p class="curved-circle">Years of<br> Experience</p>
+                                <h2></h2>
+                                <p class="curved-circle" style="font-size: 14px;">Experienced Team of<br> <span>Investments Bankers</span></p>
                             </div>
                         </div>
                     </div>
@@ -505,90 +552,77 @@
 <!--End slogan area-->
 
 <!--Start Company Benefits Area-->
-<section class="company-benefits-area">
-    <div class="container">
+<section class="company-benefits-area" style="position: relative; z-index:9999;">
+    <div>
         <div class="sec-title text-center">
             <div class="sub-title">
                 <div class="border-box"></div>
-                <h3>company benefits</h3>
+                <h3>why schawks</h3>
             </div>
             <h2>Building Experience & Give<br> High Success Rates</h2>
         </div>
-        <div class="row">
-            <div class="col-xl-3 col-lg-6 col-md-6">
-                <ul class="fact-counter-box">
-                    <!--Start Single Fact Counter-->
-                    <li class="single-fact-counter">
-                        <div class="inner">
-                            <div style="min-height: 100px;" class="count-outer count-box">
-                                <span class="count-text" data-speed="3000" data-stop="708">0</span>
-                            </div>
-                        </div>
-                        <div class="title">
-                            <h3>Projects are Completed</h3>
-                        </div>
-                    </li>
-                    <!--End Single Fact Counter-->
-                    <!--Start Single Fact Counter-->
-                    <li class="single-fact-counter">
-                        <div class="inner">
-                            <div style="min-height: 100px;" class="count-outer count-box">
-                                <span class="count-text" data-speed="3000" data-stop="630">0</span>
-                            </div>
-                        </div>
-                        <div class="title">
-                            <h3>Clients are Satisfied</h3>
-                        </div>
-                    </li>
-                    <!--End Single Fact Counter-->
-                    <!--Start Single Fact Counter-->
-                    <li class="single-fact-counter">
-                        <div class="inner">
-                            <div style="min-height: 100px;" class="count-outer count-box">
-                                <span class="count-text" data-speed="3000" data-stop="900">0</span>
-                            </div>
-                        </div>
-                        <div class="title">
-                            <h3>Gave Finance Advices</h3>
-                        </div>
-                    </li>
-                    <!--End Single Fact Counter-->
-                </ul>
-            </div>
+        <div class="row" style="justify-items:center; justify-content:center;">
 
             <div class="col-xl-5 col-lg-6 col-md-6">
                 <div class="company-benefits-content">
                     <div class="top-text">
-                        <p>Pellentesque tortor ex, luctus sed aliquet sit amet, molestie at odio. Etiam non
-                            commodo, fermentum est et, posuere elit.</p>
                     </div>
-                    <ul>
-                        <li>
-                            <span class="icon-check"></span>
-                            Suspe ndisse suscipit sagittis leo.
-                        </li>
-                        <li>
-                            <span class="icon-check"></span>
-                            Entum estibulum dignissim posuere.
-                        </li>
-                        <li>
-                            <span class="icon-check"></span>
-                            Lorem Ipsum gene on the tend to repeat.
-                        </li>
-                    </ul>
-                    <div class="bottom-content">
-                        <div class="img-box">
-                            <img src="/static/images/resources/benefits-content-thumb-img.jpg" alt="">
-                        </div>
-                        <div class="inner-text">
-                            <p>Consulting & finance<br> company funded in <span>1886</span></p>
-                        </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 row">
+                        <ul class="fact-counter-box row col-12">
+                            <!--Start Single Fact Counter-->
+                            <li class="col-5">
+                                <div class="fact-card">
+                                    <div class="fact-title">
+                                        <b>Seasoned Financial Advisory & Deal Experience</b>
+                                    </div>
+                                    <div class="fact-details">
+                                        <p>With deep roots in investment banking, Schawks offers proven expertise in capital raising, structuring transactions, and investment advisory, delivering real-world results across sectors.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--End Single Fact Counter-->
+                            <!--Start Single Fact Counter-->
+                            <li class="col-5">
+                                <div class="fact-card">
+                                    <div class="fact-title">
+                                        <b>Full Spectrum Capital Advisory Service</b>
+                                    </div>
+                                    <div class="fact-details">
+                                        <p>We support clients from initial fundraising strategy to investor due diligence and deal closure, ensuring seamless execution throughout the transaction lifecycle.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--End Single Fact Counter-->
+                            <!--Start Single Fact Counter-->
+                            <li class="col-5">
+                                <div class="fact-card">
+                                    <div class="fact-title">
+                                        <b>Tailored Support for Founders, Investors & Growth Companies</b>
+                                    </div>
+                                    <div class="fact-details">
+                                        <p>Whether you're a startup seeking funding, a private investor vetting an opportunity, or a company preparing for expansion, we help you structure deals that align with your growth goals.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--End Single Fact Counter-->
+                            <!--Start Single Fact Counter-->
+                            <li class="col-5">
+                                <div class="fact-card">
+                                    <div class="fact-title">
+                                        <b>Agile, Global, and Result Driven</b>
+                                    </div>
+                                    <div class="fact-details">
+                                        <p>We bring the flexibility of a boutique firm with the reach of global advisory standards, enabling us to deliver smart, agile solutions for cross-border transactions and international capital mandates.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--End Single Fact Counter-->
+                        </ul>
                     </div>
-
                 </div>
             </div>
 
-            <div class="col-xl-4">
+            <div class="col-xl-3">
                 <div class="company-benefits-img-box">
                     <div class="shape-1 paroller-2"></div>
                     <div class="shape-2 paroller-2"></div>
@@ -607,7 +641,7 @@
 <!--End Company Benefits Area-->
 
 <!--Start Testimonial Style1 Area-->
-<section class="testimonial-style1-area">
+{% comment %} <section class="testimonial-style1-area">
     <div class="container">
         <div class="sec-title text-center">
             <div class="sub-title">
@@ -665,7 +699,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 <!--End Testimonial Style1 Area-->
 
 <!--Start Partner Area-->
@@ -674,7 +708,7 @@
 
 
 <!--Start Blog Style1 Area-->
-<section class="blog-style1-area">
+{% comment %} <section class="blog-style1-area">
     <div class="container">
         <div class="sec-title text-center">
             <div class="icon">
@@ -729,7 +763,7 @@
 
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 <!--End Blog Style1 Area-->
 
 <!--Start Slogan Style2 Area-->
@@ -739,10 +773,10 @@
             <div class="col-xl-12">
                 <div class="slogan-style2-content">
                     <div class="title">
-                        <h2>We’re Delivering the Best<br> Customer Experience</h2>
+                        <h2>We deliver investment-grade <br>services to our clients</h2>
                     </div>
                     <div class="button-box">
-                        <a class="btn-one" href="{% url 'consulting:about' %}"><span class="txt">Discover More</span></a>
+                        <a class="btn-one" href="{% url 'consulting:services' %}"><span class="txt">Discover More</span></a>
                     </div>
                 </div>
             </div>

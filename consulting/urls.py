@@ -25,4 +25,5 @@ urlpatterns = [
     path('cases/<slug:slug>/', views.case_detail, name='case_details'),
     # FAQ
     path('faq/', views.faq, name='faq'),
+    path('coming-soon/', views.coming_soon, name='coming_soon'),
 ]

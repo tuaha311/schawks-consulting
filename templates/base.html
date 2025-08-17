@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Axial Consulting{% endblock %}</title>
+    <title>{% block title %}Shawks Consulting{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -98,7 +98,7 @@
                         <div class="header-left">
                             <div class="main-logo-box">
                                 <a href="{% url 'consulting:home' %}">
-                                    <img src="{% static 'images/resources/logo.png' %}" alt="Axial Logo" title="">
+                                    <img src="{% static 'images/brand/shawks-logo.png' %}" alt="Axial Logo" title="">
                                 </a>
                             </div>
 
@@ -126,9 +126,15 @@
                                                     {% endfor %}
                                                 </ul>
                                             </li>
-                                            <li><a href="{% url 'consulting:team' %}"><span>Team</span></a></li>
-                                            <li><a href="{% url 'consulting:testimonials' %}"><span>Testimonials</span></a></li>
-                                            <li class="dropdown"><a href="{% url 'consulting:blog' %}"><span>Blog</span></a>
+                                            {% comment %} <li><a href="{% url 'consulting:team' %}"><span>Team</span></a></li> 
+                                            <li><a href="{% url 'consulting:testimonials' %}"><span>Testimonials</span></a></li>{% endcomment %}
+                                            <li class="dropdown"><a href="{% url 'consulting:blog' %}"><span>Resources</span></a>
+                                                <ul>
+                                                    <li><a href="{% url 'consulting:blog' %}">Blogs</a></li>
+                                                    <li><a href="{% url 'consulting:cases' %}">Cases</a></li>
+                                                </ul>
+                                            </li>
+                                            {% comment %} <li class="dropdown"><a href="{% url 'consulting:blog' %}"><span>Blog</span></a>
                                                 <ul>
                                                     <li><a href="{% url 'consulting:blog' %}">All Posts</a></li>
                                                     {% for category in nav_blog_categories %}
@@ -136,9 +142,10 @@
                                                     {% endfor %}
                                                 </ul>
                                             </li>
-                                            <li><a href="{% url 'consulting:cases' %}"><span>Cases</span></a></li>
-                                            <li><a href="{% url 'consulting:faq' %}"><span>FAQ</span></a></li>
+                                            <li><a href="{% url 'consulting:cases' %}"><span>Cases</span></a></li> {% endcomment %}
+                                            {% comment %} <li><a href="{% url 'consulting:faq' %}"><span>FAQ</span></a></li> {% endcomment %}
                                             <li><a href="{% url 'consulting:contact' %}"><span>Contact</span></a></li>
+                                            <li><a href="{% url 'consulting:coming_soon' %}"><span>Book a Call</span></a></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -150,7 +157,7 @@
                         <!--End Header Left-->
 
                         <!--Start Header Right-->
-                        <div class="header-right">
+                        <div class="header-right" style="display:none;">
                             {% comment %} <div class="phone-number-box1">
                                 <div class="icon">
                                     <span class="icon-phone-call"></span>
@@ -179,7 +186,7 @@
                         <!--Logo-->
                         <div class="logo float-left">
                             <a href="{% url 'consulting:home' %}" class="img-responsive">
-                                <img src="{% static 'images/resources/sticky-logo.png' %}" alt="" title="">
+                                <img src="{% static 'images/brand/shawks-logo.png' %}" alt="" title="" style="height:50px; width:240px;">
                             </a>
                         </div>
                         <!--Right Col-->
@@ -229,22 +236,22 @@
                                 <div class="single-footer-widget single-footer-widget--company-info marbtm50">
                                     <div class="our-company-info">
                                         <div class="text-box">
-                                            <p>60 Broklyn Golden Street New York. USA</p>
+                                            <p>177 M - Maraghzar Colony, Lahore</p>
                                         </div>
                                         {% comment %} <h2><a href="tel:123456789">+3-(856) 000-9850</a></h2> {% endcomment %}
-                                        <h3><a href="mailto:yourmail@email.com">needhelp@company.com</a></h3>
+                                        <h3><a href="mailto:contact@shawks.com">contact@shawks.com</a></h3>
                                         <div class="footer-social-link">
                                             <ul class="clearfix">
-                                                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                                <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
+                                                <li><a href=""><i class="icon-linkedin"></i></a></li>
+                                                {% comment %} <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
                                                 <li><a href="#"><i class="icon-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="icon-instagram"></i></a></li>
+                                                <li><a href="#"><i class="icon-instagram"></i></a></li> {% endcomment %}
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12" style="justify-items: end; justify-content: end">
                                 <div class="single-footer-widget single-footer-widget--link-box marbtm50">
                                     <div class="title">
                                         <h3>Explore</h3>
@@ -252,7 +259,7 @@
                                     <div class="footer-widget-links">
                                         <ul>
                                             <li><a href="{% url 'consulting:about' %}">About</a></li>
-                                            <li><a href="{% url 'consulting:team' %}">Meet the Team</a></li>
+                                            {% comment %} <li><a href="{% url 'consulting:team' %}">Meet the Team</a></li> {% endcomment %}
                                             <li><a href="{% url 'consulting:cases' %}">Case Stories</a></li>
                                             <li><a href="{% url 'consulting:blog' %}">Latest News</a></li>
                                             <li><a href="{% url 'consulting:contact' %}">Contact</a></li>
@@ -266,7 +273,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12" style="display:none;">
                                 <div class="single-footer-widget">
                                     <div class="title">
                                         <h3>Newsletter</h3>
@@ -288,10 +295,10 @@
                     <div class="container">
                         <div class="bottom-inner">
                             <div class="footer-logo-style1">
-                                <a href="{% url 'consulting:home' %}"><img src="{% static 'images/footer/footer-logo.png' %}" alt="Axial Logo" title=""></a>
+                                <a href="{% url 'consulting:home' %}"><img src="{% static 'images/brand/shawks-logo.png' %}" alt="Shawks Logo" title="" height="150" width="400" style="height:100px; width:350px;"></a>
                             </div>
                             <div class="copyright">
-                                <p>Copyright &copy; 2025 <a href="{% url 'consulting:home' %}">Axial</a> All Rights Reserved.</p>
+                                <p>Copyright &copy; 2025 <a href="{% url 'consulting:home' %}">Shawks</a> All Rights Reserved.</p>
                             </div>
                         </div>
                     </div>
