@@ -8,7 +8,7 @@ from .models import TeamMember, Service, Case, Testimonial, BlogPost, BlogCommen
 
 def home(request):
     """Home page view"""
-    cases_qs = Case.objects.filter(is_published=True).order_by('-case_date', '-created_at')[:2]
+    cases_qs = Case.objects.filter(is_published=True).order_by('-case_date', '-created_at')[:4]
     testimonials_qs = Testimonial.objects.filter(is_active=True)
     recent_posts = BlogPost.objects.filter(is_published=True).order_by('-publish_date')[:3]
     context = {
@@ -229,6 +229,15 @@ def faq(request):
         # 'faqs': faqs,
     }
     return render(request, 'faq.html', context)
+
+def coming_soon(request):
+    """FAQ page view"""
+    # faqs = FAQ.objects.filter(is_active=True)
+    context = {
+        'page_title': 'This Feature is Coming Soon',
+        # 'faqs': faqs,
+    }
+    return render(request, 'coming-soon.html', context)
 
 def error_404_view(request, exception):
     """Custom 404 error page"""
