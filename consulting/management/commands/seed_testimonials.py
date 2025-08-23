@@ -12,7 +12,7 @@ class Command(BaseCommand):
             "name": "Christine Rose",
             "role": "CEO, Rose Industries",
             "text": (
-                "Axial's strategic insights transformed our operations. Their hands-on approach and deep "
+                "Schawks's strategic insights transformed our operations. Their hands-on approach and deep "
                 "expertise accelerated our growth trajectory beyond expectations."
             ),
             "image_url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
@@ -21,7 +21,7 @@ class Command(BaseCommand):
             "name": "Mike Hardson",
             "role": "VP Marketing, Hardson Co.",
             "text": (
-                "Working with Axial felt like an extension of our team. They delivered measurable results and "
+                "Working with Schawks felt like an extension of our team. They delivered measurable results and "
                 "empowered our staff with new capabilities."
             ),
             "image_url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
@@ -39,7 +39,7 @@ class Command(BaseCommand):
             "name": "Samuel Green",
             "role": "Founder, GreenTech",
             "text": (
-                "The team at Axial delivered a market entry strategy that positioned us for rapid adoption "
+                "The team at Schawks delivered a market entry strategy that positioned us for rapid adoption "
                 "while staying true to our mission-driven culture."
             ),
             "image_url": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80",
@@ -48,7 +48,7 @@ class Command(BaseCommand):
             "name": "Isabella Turner",
             "role": "Chief HR Officer, Turner Group",
             "text": (
-                "Axial's leadership development program has been a game-changer for our managers, boosting "
+                "Schawks's leadership development program has been a game-changer for our managers, boosting "
                 "engagement and performance across departments."
             ),
             "image_url": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80",

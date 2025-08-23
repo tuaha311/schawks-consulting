@@ -40,10 +40,10 @@
     <link href="{% static 'css/color/theme-color.css' %}" id="jssDefault" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-32x32.png' %}" sizes="32x32">
-    <link rel="icon" type="image/png" href="{% static 'images/favicon/favicon-16x16.png' %}" sizes="16x16">
-    <!--[if lt IE 9]>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/brand/schawks-favicon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/brand/schawks-favicon.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'images/brand/schawks-favicon.png' %}" sizes="16x16">
+    <!--[if lt IE 9]>   
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script src="{% static 'js/html5shiv.js' %}"></script>
     <![endif]-->
@@ -98,7 +98,7 @@
                         <div class="header-left">
                             <div class="main-logo-box">
                                 <a href="{% url 'consulting:home' %}">
-                                    <img src="{% static 'images/brand/shawks-logo.png' %}" alt="Axial Logo" title="">
+                                    <img src="{% static 'images/brand/shawks-logo.png' %}" alt="Schawks Logo" title="">
                                 </a>
                             </div>
 
@@ -116,9 +116,14 @@
                                 <nav class="main-menu style1 navbar-expand-md navbar-light">
                                     <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                         <ul class="navigation clearfix">
-                                            <li class="dropdown current"><a href="{% url 'consulting:home' %}"><span>Home</span></a></li>
-                                            <li><a href="{% url 'consulting:about' %}"><span>About</span></a></li>
-                                            <li class="dropdown"><a href="{% url 'consulting:services' %}"><span>Services</span></a>
+                                            <li class="dropdown {% if request.resolver_match.url_name == 'home' %}current{% endif %}">
+                                                <a href="{% url 'consulting:home' %}"><span>Home</span></a>
+                                            </li>
+                                            <li class="{% if request.resolver_match.url_name == 'about' %}current{% endif %}">
+                                                <a href="{% url 'consulting:about' %}"><span>About</span></a>
+                                            </li>
+                                            <li class="dropdown {% if 'services' in request.resolver_match.url_name %}current{% endif %}">
+                                                <a href="{% url 'consulting:services' %}"><span>Services</span></a>
                                                 <ul>
                                                     <li><a href="{% url 'consulting:services' %}">View All Services</a></li>
                                                     {% for service in nav_services %}
@@ -126,26 +131,19 @@
                                                     {% endfor %}
                                                 </ul>
                                             </li>
-                                            {% comment %} <li><a href="{% url 'consulting:team' %}"><span>Team</span></a></li> 
-                                            <li><a href="{% url 'consulting:testimonials' %}"><span>Testimonials</span></a></li>{% endcomment %}
-                                            <li class="dropdown"><a href="{% url 'consulting:blog' %}"><span>Resources</span></a>
+                                            <li class="{% if 'client_segment' in request.resolver_match.url_name %}current{% endif %}">
+                                                <a href="{% url 'consulting:client_segment' %}"><span>Client Segment</span></a>
+                                            </li>
+                                            <li class="dropdown {% if 'blog' in request.resolver_match.url_name or 'cases' in request.resolver_match.url_name %}current{% endif %}">
+                                                <a href="{% url 'consulting:blog' %}"><span>Resources</span></a>
                                                 <ul>
                                                     <li><a href="{% url 'consulting:blog' %}">Blogs</a></li>
                                                     <li><a href="{% url 'consulting:cases' %}">Cases</a></li>
                                                 </ul>
                                             </li>
-                                            {% comment %} <li class="dropdown"><a href="{% url 'consulting:blog' %}"><span>Blog</span></a>
-                                                <ul>
-                                                    <li><a href="{% url 'consulting:blog' %}">All Posts</a></li>
-                                                    {% for category in nav_blog_categories %}
-                                                    <li><a href="{% url 'consulting:blog' %}?category={{ category.slug }}">{{ category.name }}</a></li>
-                                                    {% endfor %}
-                                                </ul>
+                                            <li class="{% if 'coming_soon' in request.resolver_match.url_name %}current{% endif %}">
+                                                <a href="{% url 'consulting:coming_soon' %}"><span>Book a Call</span></a>
                                             </li>
-                                            <li><a href="{% url 'consulting:cases' %}"><span>Cases</span></a></li> {% endcomment %}
-                                            {% comment %} <li><a href="{% url 'consulting:faq' %}"><span>FAQ</span></a></li> {% endcomment %}
-                                            <li><a href="{% url 'consulting:contact' %}"><span>Contact</span></a></li>
-                                            <li><a href="{% url 'consulting:coming_soon' %}"><span>Book a Call</span></a></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -242,7 +240,10 @@
                                         <h3><a href="mailto:contact@shawks.com">contact@shawks.com</a></h3>
                                         <div class="footer-social-link">
                                             <ul class="clearfix">
-                                                <li><a href=""><i class="icon-linkedin"></i></a></li>
+                                                {% comment %} <li><a href=""><i class="icon-linkedin"></i></a></li>{% endcomment %}
+                                                <li> 
+                                                    <a href="https://www.linkedin.com/company/schawks/"><img src="https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzsrca"></img></a>
+                                                </li>
                                                 {% comment %} <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
                                                 <li><a href="#"><i class="icon-pinterest"></i></a></li>
                                                 <li><a href="#"><i class="icon-instagram"></i></a></li> {% endcomment %}
@@ -262,13 +263,13 @@
                                             {% comment %} <li><a href="{% url 'consulting:team' %}">Meet the Team</a></li> {% endcomment %}
                                             <li><a href="{% url 'consulting:cases' %}">Case Stories</a></li>
                                             <li><a href="{% url 'consulting:blog' %}">Latest News</a></li>
-                                            <li><a href="{% url 'consulting:contact' %}">Contact</a></li>
+                                            {% comment %} <li><a href="{% url 'consulting:contact' %}">Contact</a></li> {% endcomment %}
                                         </ul>
                                         <ul class="right">
-                                            <li><a href="{% url 'consulting:contact' %}">Support</a></li>
+                                            <li><a href="{% url 'consulting:client_segment' %}">Client Segment</a></li>
                                             <li><a href="{% url 'consulting:about' %}">Terms of Use</a></li>
                                             <li><a href="{% url 'consulting:about' %}">Privacy Policy</a></li>
-                                            <li><a href="{% url 'consulting:contact' %}">Help</a></li>
+                                            {% comment %} <li><a href="{% url 'consulting:contact' %}">Help</a></li> {% endcomment %}
                                         </ul>
                                     </div>
                                 </div>
@@ -306,6 +307,53 @@
             </footer>
         </div>
         <button class="scroll-top scroll-to-target" data-target="html"><span class="flaticon-up-arrow"></span></button>
+        
+        <script>
+        // Sync active states between main nav and sticky header
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainNavItems = document.querySelectorAll('.main-menu .navigation > li');
+            const currentPath = window.location.pathname;
+            
+            // Function to update active states
+            function updateActiveStates() {
+                // Reset all active states
+                mainNavItems.forEach(item => {
+                    item.classList.remove('current');
+                    const link = item.querySelector('a');
+                    if (link) {
+                        const href = link.getAttribute('href');
+                        if (href && currentPath.includes(href) && href !== '/') {
+                            item.classList.add('current');
+                        }
+                    }
+                });
+                
+                // Special case for home page
+                if (currentPath === '/') {
+                    document.querySelector('.main-menu .navigation > li:first-child').classList.add('current');
+                }
+                
+                // Sync with sticky header
+                const stickyNav = document.querySelector('.sticky-header .main-menu .navigation');
+                if (stickyNav) {
+                    stickyNav.innerHTML = document.querySelector('.main-menu .navigation').innerHTML;
+                }
+            }
+            
+            // Initial update
+            updateActiveStates();
+            
+            // Update on navigation
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.main-menu .navigation a')) {
+                    setTimeout(updateActiveStates, 100);
+                }
+            });
+            
+            // Update on history changes (for back/forward buttons)
+            window.addEventListener('popstate', updateActiveStates);
+        });
+        </script>
         <div id="search-popup" class="search-popup">
             <div class="close-search"><i class="icon-close"></i></div>
             <div class="popup-inner">
@@ -356,7 +404,7 @@
         <script src="{% static 'js/wow.js' %}"></script>
         <script src="{% static 'js/jquery-1color-switcher.min.js' %}"></script>
         <script src="{% static 'js/parallax.min.js' %}"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATY4Rxc8jNvDpsK8ZetC7JyN4PFVYGCGM&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATY4Rxc8jNvDpsK8ZetC7JyN4PFVYGCGM&callback=GmapInit"></script>
         <script src="{% static 'js/custom.js' %}"></script>
     </div>
 </body>

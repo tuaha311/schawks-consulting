@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Contact - Axial Consulting{% endblock %}
+{% block title %}Contact - Schawks Consulting{% endblock %}
 {% block content %}
 <!--Start breadcrumb area paroller-->
 <section class="breadcrumb-area">
@@ -32,16 +32,24 @@
     <div class="auto-container">
         <div class="contact-page-map-outer">
             <!--Map Canvas-->
-            <div class="map-canvas" data-zoom="12" data-lat="-37.817085" data-lng="144.955631"
-                data-type="roadmap" data-hue="#ffc400" data-title="Envato"
+            <div class="map-canvas" 
+                data-zoom="16" 
+                data-lat="31.50117034808929" 
+                data-lng="74.25046407626748"
+                data-type="roadmap" 
+                data-hue="#ffc400" 
+                data-title="Maraghzar Colony, Lahore"
                 data-icon-path="/static/images/icon/map-marker.png"
-                data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
+                data-content="Plot 177, Maraghzar Colony Block N, Marghzar Housing Scheme, Lahore, Pakistan<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
             </div>
+
+
+            {% comment %} <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.8367652411594!2d74.25046407626748!3d31.50117034808929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919025a07390bd7%3A0x5421c72ac34b9f9e!2sPlot%20177%2C%20Maraghzar%20Colony%20Block%20N%20Marghzar%20Housing%20Scheme%2C%20Lahore%2C%20Pakistan!5e0!3m2!1sen!2s!4v1755461104535!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> {% endcomment %}
 
             <div class="contact-info-box">
                 <div class="left-box">
-                    <h2><a href="tel:123456789">+3-(856) 000-9850</a></h2>
-                    <h3><a href="mailto:yourmail@email.com">needhelp@company.com</a></h3>
+                    <h2><a href="tel:123456789">+92-(300) 000-9850</a></h2>
+                    <h3><a href="mailto:yourmail@email.com">contact@schawks.com</a></h3>
                 </div>
                 <div class="middle-box">
                     <p>177 M - Maraghzar Colony<br> Lahore. Pakistan</p>
@@ -50,9 +58,9 @@
                     <div class="thm-social-link1">
                         <ul class="clearfix">
                             <li>
-                                <a href="#"><i class="icon-twitter"></i></a>
+                                <a href="#"><img src="https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzsrca"></img></a>
                             </li>
-                            <li>
+                            {% comment %} <li>
                                 <a href="#"><i class="icon-facebook-circular-logo"></i></a>
                             </li>
                             <li>
@@ -60,7 +68,7 @@
                             </li>
                             <li>
                                 <a href="#"><i class="icon-instagram"></i></a>
-                            </li>
+                            </li> {% endcomment %}
                         </ul>
                     </div>
                 </div>

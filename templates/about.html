@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}About - Axial Consulting{% endblock %}
+{% block title %}About - Schawks Consulting{% endblock %}
 {% block content %}
 <!--Start breadcrumb area paroller-->
 <section class="breadcrumb-area">
@@ -47,9 +47,9 @@
                     <div class="sec-title sec-title--style2">
                         <div class="sub-title">
                             <div class="border-box"></div>
-                            <h3>About the company</h3>
+                            <h3>About the Firm</h3>
                         </div>
-                        <h2>Get to Know About<br> Consulting</h2>
+                        <h2>Who We Are</h2>
                     </div>
                     <div class="inner-content">
                         <div class="top-text">
@@ -57,40 +57,27 @@
                                 <span class="icon-recruit"></span>
                             </div>
                             <div class="inner-title">
-                                <h3><span>Proin est lacus, sagittis lobortis iaculis eget.</span>
-                                    Laculis nec purus. Cras faucibus fringilla orci in sollicitudin. Donec eget
-                                    tincidunt arcu.</h3>
+                                <h3>Schawks is a boutique Corporate Finance and Capital Advisory firm built by investment banking professionals with transactional experience across public & private equity, capital markets, strategic advisory, mergers & acquisitions, venture capital, privatizations, and project finance. We specialize in helping founders & startups, SMBs & corporates, investors, investment firms, and search funds to become investor-ready with clarity, confidence, and data-driven decision-making.</h3>
                             </div>
                         </div>
                         <ul>
                             <li>
                                 <span class="icon-check"></span>
-                                Nsectetur cing elit.
+                                Advisory mandates across North America, the UK, the GCC & Pakistan.
                             </li>
                             <li>
                                 <span class="icon-check"></span>
-                                Suspe ndisse suscipit sagittis leo.
+                                Experience across startups, technology, financial services, infrastructure, manufacturing, consumer & energy sectors.
                             </li>
                             <li>
                                 <span class="icon-check"></span>
-                                Entum estibulum dignissim posuere.
-                            </li>
-                            <li>
-                                <span class="icon-check"></span>
-                                Donec tristique ante vel sem dictum rhoncus.
+                                100% custom financial models, investor documents, and deal advisory, not cookie-cutter templates.
                             </li>
                         </ul>
-
-                        <div class="signature-box">
-                            <h2>Kevin Martin <span>- CO Founder</span></h2>
-                        </div>
 
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </section>
@@ -98,45 +85,12 @@
 
 
 <!--Start slogan area-->
-<section class="slogan-area">
-    <div class="slogan-area__bg"
-        style="background-image: url(/static/images/parallax-background/slogan-area-bg.jpg);"></div>
-    <div class="shape wow slideInRight" data-wow-delay="1400ms" data-wow-duration="5500ms"
-        style="background-image: url(/static/images/shape/shape-1.png);">
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="slogan-text-box">
-                    <h2 class="paroller">We Provide <span
-                            style="background-image: url(/static/images/shape/zig-zag.png);">Best</span><br>
-                        Finance & Consulting<br> Services</h2>
-                    <div class="slogan-btn-box paroller">
-                        <a class="btn-one" href="{% url 'consulting:about' %}">
-                            <span class="txt">Discover More</span>
-                        </a>
-                    </div>
-
-                    <div class="parallax-scene parallax-scene-1">
-                        <div data-depth="0.20" class="parallax-layer shape wow zoomInRight"
-                            data-wow-duration="2000ms">
-                            <div class="experience-box">
-                                <h2>30</h2>
-                                <p class="curved-circle">Years of<br> Experience</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{% include 'partials/_slogan.html' %}
 <!--End slogan area-->
 
 
 <!--Start Testimonial Style1 Area-->
-<section class="testimonial-style1-area">
+<section class="testimonial-style1-area" style="display: none;">
     <div class="container">
         <div class="sec-title text-center">
             <div class="sub-title">
@@ -199,7 +153,7 @@
 <!--End Testimonial Style1 Area-->
 
 <!--Start Partner Area-->
-{% include 'partials/_partners.html' %}
+{% comment %} {% include 'partials/_partners.html' %} {% endcomment %}
 <!--End Partner Area-->
 
 <!--Start Team Style1 Area-->
@@ -221,7 +175,7 @@
                             <img src="{{ member.display_image }}" alt="{{ member.name }}" />
                         </div>
                         <div class="title-holder text-center">
-                            <h2>{{ member.name }}</h2>
+                            <h2 style="color: #000;">{{ member.name }}</h2>
                             <h3>{{ member.role }}</h3>
                             <p>{{ member.bio }}</p>
                             <ul class="social-links">
@@ -236,24 +190,74 @@
             </div>
             {% endfor %}
         </div>
+    </div>
+</section>
 
-        <!--Start Slogan Style2 Area-->
-        <section class="slogan-style2-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="slogan-style2-content">
-                            <div class="title">
-                                <h2>We’re Delivering the Best<br> Customer Experience</h2>
-                            </div>
-                            <div class="button-box">
-                                <a class="btn-one" href="{% url 'consulting:about' %}"><span class="txt">Discover More</span></a>
-                            </div>
+<!--Start Founder Profile Area-->
+<section class="about-style2-area" style="padding: 120px 0 90px; display: none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="about-style1__image clearfix">
+                    <div class="shape-1"></div>
+                    <div class="shape-2"></div>
+                    <div class="inner">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmVzc2lvbmFsJTIwbWFufGVufDB8fDB8fHww" alt="Sohaib Qamar - Founder" style="width: 100%; height: auto; border-radius: 5px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div class="about-style2__content">
+                    <div class="sec-title sec-title--style2">
+                        <div class="sub-title">
+                            <div class="border-box"></div>
+                            <h3>Founder</h3>
+                        </div>
+                        <h2>Sohaib Qamar</h2>
+                        <p class="position">Investment Banker & Capital Advisor</p>
+                    </div>
+                    <div class="inner-content">
+                        <div class="text">
+                            <p>Sohaib Qamar is an experienced Investment Banker and Capital Advisor with expertise spanning Public & Private Equity, Transaction Advisory, Capital Structuring & Fundraising, Capital Markets, and Project Finance.</p>
+                            
+                            <p>He is the Founder and Lead Capital Advisor at Schawks, a boutique advisory firm helping Founders, SMEs, Corporates, Investors, and Search Funds become truly deal-ready with institutional-grade clarity, strategy, and execution.</p>
+                            
+                            <p>With hands-on transactional experience in IPOs, Private Equity, Debt Syndications, M&A Advisory, Restructuring, Privatization, and Project Finance, Sohaib has advised on transactions collectively valued at PKR ____ / USD ____, supporting businesses and investors in successfully raising capital, executing acquisitions, and structuring growth-oriented deals.</p>
+                            
+                            <p>Before establishing Schawks, he delivered high-impact mandates at Pak-China Investment Company Limited and the Bank of Punjab, gaining deep expertise across diverse sectors.</p>
+                            
+                            <p>At Schawks, Sohaib leads a specialized corporate finance and capital advisory team delivering bespoke solutions, including investor-ready financial models, equity valuations, buy-side & sell-side M&A advisory, ETA (Entrepreneurship Through Acquisition) support, fundraising strategies, term sheet negotiations, and deal structuring.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!--End Slogan Style2 Area-->
+        </div>
+    </div>
+    <div class="container">
+    <p>His approach blends technical precision with strategic storytelling, ensuring that every client not only has the right numbers but also the right narrative to win investor confidence. This unique mix enables clients to raise capital faster, secure strategic investments, acquire businesses, and execute transactions successfully.</p>
+                            
+    <p>Sohaib's vision for Schawks is to build a global-standard capital advisory practice that empowers entrepreneurs, investors, and corporations to navigate complex financial decisions with confidence.</p>
+    </div>
+</section>
+<!--End Founder Profile Area-->
 
+<!--Start Slogan Style2 Area-->
+ <section class="slogan-style2-area" style="position:relative; z-index:999">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="slogan-style2-content">
+                    <div class="title">
+                        <h2>We’re Delivering the Best<br> Customer Experience</h2>
+                    </div>
+                    <div class="button-box">
+                        <a class="btn-one" href="{% url 'consulting:about' %}"><span class="txt">Discover More</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Slogan Style2 Area-->
 {% endblock %}

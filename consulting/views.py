@@ -242,3 +242,10 @@ def coming_soon(request):
 def error_404_view(request, exception):
     """Custom 404 error page"""
     return render(request, 'error.html', status=404)
+
+def client_segment(request):
+    """Client segments page view"""
+    context = {
+        'page_title': 'Client Segments',
+    }
+    return render(request, 'client-segment.html', context)

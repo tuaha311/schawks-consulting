@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ service.title }} - Axial Consulting{% endblock %}
+{% block title %}{{ service.title }} - Schawks Consulting{% endblock %}
 {% block content %}
 <!--Start breadcrumb area paroller-->
 <section class="breadcrumb-area">
@@ -33,7 +33,7 @@
             <!--Start Service Details Sidebar -->
             <div class="col-xl-4 col-lg-5 order-box-2">
                 <div class="service-details__sidebar">
-                    <div class="view-all-service">
+                    <div class="view-all-service d-none">
                         <ul class="service-pages">
                             {% for s in services %}
                             <li{% if s.pk == service.pk %} class="active"{% endif %}>
@@ -50,7 +50,7 @@
                             <span class="icon-phone-call"></span>
                         </div>
                         <h3>Contact with<br> us for any<br> advice</h3>
-                        <h2><a href="tel:+50033333">+3-(856) 000-9850</a></h2>
+                        <h2><a href="tel:+9233551482000">+92-(335) 51482000</a></h2>
                     </div>
                     <div class="info-download-box">
                         <ul>

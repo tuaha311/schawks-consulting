@@ -178,6 +178,8 @@ function GmapInit() {
         }
      });
 }
+// Expose GmapInit globally so Google Maps callback can find it
+window.GmapInit = GmapInit;
     
 function MapLoadScript() {
     var script = document.createElement('script');

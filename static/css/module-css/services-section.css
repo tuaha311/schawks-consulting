@@ -629,7 +629,7 @@
     display: block;
     background: var(--thm-base);
     padding: 60px 50px 60px;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     z-index: 1;
 }
 

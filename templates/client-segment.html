@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+{% block title %}Client Segments - Schawks Consulting{% endblock %}
+
+{% block content %}
+<!--Start breadcrumb area-->
+<section class="breadcrumb-area">
+    <div class="breadcrumb-area-bg" style="background-image: url(https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80);">
+    </div>
+    <div class="shape-box"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="inner-content">
+                    <div class="breadcrumb-menu">
+                        <ul>
+                            <li><span class="icon-check"></span> <a href="{% url 'consulting:home' %}">Home</a></li>
+                            <li class="active">Client Segments</li>
+                        </ul>
+                    </div>
+                    <div class="title" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+                        <h2>Client Segments</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End breadcrumb area-->
+
+<!--Start Client Segments Intro-->
+<section class="about-style2-area" style="padding: 100px 0 50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="sec-title sec-title--style2 text-center">
+                    <div class="sub-title">
+                        <div class="border-box"></div>
+                        <h3>Our Expertise</h3>
+                    </div>
+                    <h2>Client Segment</h2>
+                </div>
+                <div class="text-content text-center mb-5">
+                    <p>At Schawks, we serve a diverse range of stakeholders - from high-growth startups and mid-market businesses to institutional investors, investment firms and family offices. Our team brings deep investment banking expertise to every engagement, delivering tailored research, financial insights, and strategic clarity - empowering our clients to make confident, high-impact capital decisions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Client Segments Intro-->
+
+<!--Start Segments Area-->
+<section class="client-segments-area" style="padding: 80px 0 100px; background-color: #f9f9f9;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center mb-5">
+                <div class="section-title">
+                    <h2>Our Client Segments</h2>
+                    <div class="title-shape"></div>
+                    <p>We provide tailored financial solutions for diverse business needs across various industries and stages.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row g-4" style="justify-content: center;">
+            <!-- Startup Segment -->
+            <div class="col-lg-4 col-12 col-md-6">
+                <div class="segment-card">
+                    <div class="segment-icon">
+                        <i class="icon-startup"></i>
+                    </div>
+                    <h3>Startups</h3>
+                    <div class="segment-content">
+                        <p>Empowering early-stage to Series B startups with financial modeling, fundraising strategies, and investor readiness programs.</p>
+                        <ul class="segment-features">
+                            <li><span class="icon-check"></span> Financial Modeling</li>
+                            <li><span class="icon-check"></span> Fundraising Support</li>
+                            <li><span class="icon-check"></span> Investor Readiness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corporates & SMBs -->
+            <div class="col-lg-4 col-12 col-md-6">
+                <div class="segment-card">
+                    <div class="segment-icon">
+                        <i class="icon-corporation"></i>
+                    </div>
+                    <h3>Corporates & SMBs</h3>
+                    <div class="segment-content">
+                        <p>Strategic financial advisory for growing businesses seeking expansion and operational excellence.</p>
+                        <ul class="segment-features">
+                            <li><span class="icon-check"></span> Capital Raising</li>
+                            <li><span class="icon-check"></span> M&A Advisory</li>
+                            <li><span class="icon-check"></span> Financial Planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Firms -->
+            <div class="col-lg-4 col-12 col-md-6">
+                <div class="segment-card">
+                    <div class="segment-icon">
+                        <i class="icon-investment"></i>
+                    </div>
+                    <h3>Investment Firms</h3>
+                    <div class="segment-content">
+                        <p>Comprehensive support for private equity and venture capital firms in deal evaluation and execution.</p>
+                        <ul class="segment-features">
+                            <li><span class="icon-check"></span> Deal Evaluation</li>
+                            <li><span class="icon-check"></span> Financial Modeling</li>
+                            <li><span class="icon-check"></span> Investment Research</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Funds & ETA -->
+            <div class="col-lg-4 col-12 col-md-6 mt-4">
+                <div class="segment-card">
+                    <div class="segment-icon">
+                        <i class="icon-search"></i>
+                    </div>
+                    <h3>Search Funds & ETA</h3>
+                    <div class="segment-content">
+                        <p>Specialized support for search funds and entrepreneurs through acquisition in identifying and evaluating acquisition targets.</p>
+                        <ul class="segment-features">
+                            <li><span class="icon-check"></span> Target Screening</li>
+                            <li><span class="icon-check"></span> Deal Structuring</li>
+                            <li><span class="icon-check"></span> Capital Planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Private Investors -->
+            <div class="col-lg-4 col-12 col-md-6 mt-4">
+                <div class="segment-card">
+                    <div class="segment-icon">
+                        <i class="icon-family"></i>
+                    </div>
+                    <h3>Private Investors & Family Offices</h3>
+                    <div class="segment-content">
+                        <p>Tailored investment analysis and due diligence services for private investors and family offices.</p>
+                        <ul class="segment-features">
+                            <li><span class="icon-check"></span> Due Diligence</li>
+                            <li><span class="icon-check"></span> Portfolio Analysis</li>
+                            <li><span class="icon-check"></span> Investment Models</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.client-segments-area {
+    position: relative;
+    overflow: hidden;
+}
+
+.segment-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 35px 30px;
+    height: 100%;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.segment-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.segment-icon {
+    font-size: 48px;
+    color: #1a3a6e;
+    margin-bottom: 20px;
+}
+
+.segment-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #1a3a6e;
+    font-weight: 700;
+}
+
+.segment-content p {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.segment-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.segment-features li {
+    position: relative;
+    padding: 5px 0 5px 25px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.segment-features li:before {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #1a3a6e;
+    position: absolute;
+    left: 0;
+    top: 6px;
+    font-size: 14px;
+}
+
+.section-title h2 {
+    color: #1a3a6e;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.title-shape {
+    width: 60px;
+    height: 3px;
+    background: #1a3a6e;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.title-shape:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 100%;
+    height: 7px;
+    background: rgba(26, 58, 110, 0.2);
+    border-radius: 3px;
+}
+
+@media (max-width: 991px) {
+    .segment-card {
+        padding: 25px 20px;
+    }
+    
+    .segment-icon {
+        font-size: 40px;
+    }
+    
+    .segment-card h3 {
+        font-size: 20px;
+    }
+}
+</style>
+<!--End Segments Area-->
+
+<!--Start CTA Style2 Area-->
+{% include 'partials/_slogan.html' %}
+<!--End CTA Style2 Area-->
+{% endblock %}
