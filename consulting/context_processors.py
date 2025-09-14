@@ -17,7 +17,7 @@ def navigation_data(request):
     Add navigation data to the template context.
     """
     # Get top 5 active services for navigation dropdown
-    top_services = Service.objects.filter(is_active=True).order_by('created_at')[:5]
+    top_services = Service.objects.filter(is_active=True).order_by('created_at')
     
     # Get active blog categories for navigation dropdown
     blog_categories = BlogCategory.objects.filter(is_active=True).order_by('name')

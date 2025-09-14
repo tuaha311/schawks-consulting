@@ -43,6 +43,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/brand/schawks-favicon.png' %}">
     <link rel="icon" type="image/png" href="{% static 'images/brand/schawks-favicon.png' %}" sizes="32x32">
     <link rel="icon" type="image/png" href="{% static 'images/brand/schawks-favicon.png' %}" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--[if lt IE 9]>   
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <script src="{% static 'js/html5shiv.js' %}"></script>
@@ -125,7 +126,7 @@
                                             <li class="dropdown {% if 'services' in request.resolver_match.url_name %}current{% endif %}">
                                                 <a href="{% url 'consulting:services' %}"><span>Services</span></a>
                                                 <ul>
-                                                    <li><a href="{% url 'consulting:services' %}">View All Services</a></li>
+                                                    {% comment %} <li><a href="{% url 'consulting:services' %}">View All Services</a></li> {% endcomment %}
                                                     {% for service in nav_services %}
                                                     <li><a href="{% url 'consulting:service_details' service.slug %}">{{ service.title }}</a></li>
                                                     {% endfor %}
@@ -141,8 +142,11 @@
                                                     <li><a href="{% url 'consulting:cases' %}">Cases</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="{% if 'coming_soon' in request.resolver_match.url_name %}current{% endif %}">
+                                            {% comment %} <li class="{% if 'coming_soon' in request.resolver_match.url_name %}current{% endif %}">
                                                 <a href="{% url 'consulting:coming_soon' %}"><span>Book a Call</span></a>
+                                            </li> {% endcomment %}
+                                            <li class="{% if request.resolver_match.url_name == 'book_a_call' %}current{% endif %}">
+                                                <a href="{% url 'consulting:book_a_call' %}"><span>Book a Call</span></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -236,14 +240,16 @@
                                         <div class="text-box">
                                             <p>177 M - Maraghzar Colony, Lahore</p>
                                         </div>
-                                        {% comment %} <h2><a href="tel:123456789">+3-(856) 000-9850</a></h2> {% endcomment %}
+                                        <h2><a href="tel:+447402341699">+447402341699</a></h2>
                                         <h3><a href="mailto:contact@shawks.com">contact@shawks.com</a></h3>
                                         <div class="footer-social-link">
                                             <ul class="clearfix">
                                                 {% comment %} <li><a href=""><i class="icon-linkedin"></i></a></li>{% endcomment %}
-                                                <li> 
-                                                    <a href="https://www.linkedin.com/company/schawks/"><img src="https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzsrca"></img></a>
-                                                </li>
+                                                <li>
+                                                    <a href="https://www.linkedin.com/company/schawks/" target="_blank" rel="noopener">
+                                                      <i class="fa-brands fa-linkedin"></i>
+                                                    </a>
+                                                  </li>                                                  
                                                 {% comment %} <li><a href="#"><i class="icon-facebook-circular-logo"></i></a></li>
                                                 <li><a href="#"><i class="icon-pinterest"></i></a></li>
                                                 <li><a href="#"><i class="icon-instagram"></i></a></li> {% endcomment %}
@@ -261,8 +267,8 @@
                                         <ul>
                                             <li><a href="{% url 'consulting:about' %}">About</a></li>
                                             {% comment %} <li><a href="{% url 'consulting:team' %}">Meet the Team</a></li> {% endcomment %}
-                                            <li><a href="{% url 'consulting:cases' %}">Case Stories</a></li>
-                                            <li><a href="{% url 'consulting:blog' %}">Latest News</a></li>
+                                            <li><a href="{% url 'consulting:cases' %}">Case Studies</a></li>
+                                            <li><a href="{% url 'consulting:services' %}">Services</a></li>
                                             {% comment %} <li><a href="{% url 'consulting:contact' %}">Contact</a></li> {% endcomment %}
                                         </ul>
                                         <ul class="right">

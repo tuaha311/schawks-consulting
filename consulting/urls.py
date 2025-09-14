@@ -28,4 +28,6 @@ urlpatterns = [
     path('coming-soon/', views.coming_soon, name='coming_soon'),
     # Client Segments
     path('client-segment/', views.client_segment, name='client_segment'),
+    # Book a Call
+    path('book-a-call/', views.book_a_call, name='book_a_call'),
 ]

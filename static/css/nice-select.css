@@ -1,6 +1,6 @@
 .nice-select {
     position: relative;
-    display: block;
+    display: flex;
     -webkit-tap-highlight-color: transparent;
     background-color: #fff;
     border-radius: 0px;
@@ -27,6 +27,11 @@
     user-select: none;
     white-space: nowrap;
     width: auto;
+    place-content: center;
+    place-items: center;
+    justify-content: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .nice-select:hover {}

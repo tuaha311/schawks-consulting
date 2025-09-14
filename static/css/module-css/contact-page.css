@@ -104,7 +104,6 @@
 .contact-form {
     position: relative;
     display: block;
-    max-width: 770px;
     width: 100%;
     margin: 0 auto;
 }
@@ -120,8 +119,16 @@
     margin-bottom: 20px;
 }
 
+.contact-form form .input-box-nulled {
+    position: relative;
+    display: block;
+}
+
 .contact-form form input[type="text"],
+.contact-form form input[type="tel"],
+.contact-form form input[type="url"],
 .contact-form form input[type="email"],
+.contact-form form select,
 .contact-form form textarea {
     position: relative;
     display: block;

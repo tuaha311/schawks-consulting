@@ -1,0 +1,396 @@
+{% extends "base.html" %}
+{% block title %}Book a Call - Schawks Consulting{% endblock %}
+{% block content %}
+<!--Start breadcrumb area paroller-->
+<section class="breadcrumb-area">
+    <div class="breadcrumb-area-bg" style="background-image: url(https://cdn.pixabay.com/photo/2018/02/12/08/18/balloon-3147674_960_720.jpg);">
+    </div>
+    <div class="shape-box"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="inner-content">
+                    <div class="breadcrumb-menu">
+                        <ul>
+                            <li><a href="{% url 'consulting:home' %}">Home</a></li>
+                            <li class="active">Book a Call</li>
+                        </ul>
+                    </div>
+                    <div class="title" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+                        <h2>Book a Call</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End breadcrumb area-->
+
+<!--Start Main Book a Call Form Area-->
+<section class="main-contact-form-area">
+    <div class="container">
+        <div class="sec-title text-center">
+            <div class="sub-title">
+                <div class="border-box"></div>
+                <h3>Let's Connect</h3>
+            </div>
+            <h2>Book a Call</h2>
+            <p>Please fill out this form so we can better understand your needs and provide you with the most relevant consultation.</p>
+        </div>
+
+        <!-- Display Messages -->
+        {% if messages %}
+            <div class="row">
+                <div class="col-xl-12">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="contact-form">
+                    <form id="book-a-call-form" name="book_a_call_form" class="default-form2" method="post">
+                        {% csrf_token %}
+
+                        <!-- Contact Information Section -->
+                        <div class="form-section-title">
+                            <h4><i class="fas fa-user" style="color: black;"></i> Contact Information</h4>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <div class="input-box">
+                                        <input type="text" name="name" id="name" 
+                                               placeholder="What is your name? (So we know what to call you!)*" 
+                                               required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <div class="input-box">
+                                        <input type="url" name="website" id="website" 
+                                               placeholder="Do you have a website we can check out? (if not, please enter N/A)*">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <div class="input-box">
+                                        <input type="email" name="email" id="email" 
+                                               placeholder="What's the best email to reach you? (We'll keep it safe and only use it to connect with you.)*" 
+                                               required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <div class="input-box">
+                                        <input type="tel" name="phone" id="phone" 
+                                               placeholder="What's your best contact number? (Only needed in case it is important to reach out quickly.)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Business Goals Section -->
+                        <div class="form-section-title" style="margin-top: 40px;">
+                            <h4><i class="fa-solid fa-bullseye" style="color: black;"></i> Let's talk about your goals</h4>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <label for="services_looking_for" class="form-label">Are you looking for:</label>
+                                    <div class="input-box">
+                                        <select name="services_looking_for" id="services_looking_for" class="form-control" required="">
+                                            <option value="">Select a service</option>
+                                            {% for value, label in service_choices %}
+                                                <option value="{{ value }}">{{ label }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <label for="business_stage" class="form-label">Which stage best describes your business at the moment?</label>
+                                    <div class="input-box">
+                                        <select name="business_stage" id="business_stage" class="form-control" required="">
+                                            <option value="">Select your business stage</option>
+                                            {% for value, label in business_stage_choices %}
+                                                <option value="{{ value }}">{{ label }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <div class="input-box">
+                                        <input type="text" name="capital_amount" id="capital_amount" 
+                                               placeholder="How much capital are you looking to raise? (Ballpark figure is fine, if not, please enter NA)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Guest Section -->
+                        <div class="form-section-title" style="margin-top: 40px;">
+                            <h4><i class="fas fa-users" style="color: black;"></i> Add Guest</h4>
+                            <p class="section-subtitle">Adding a guest means, one who is filling the form will enter the email of their team member(s), they want to be in the call.</p>
+                        </div>
+
+                        <div id="guests-container">
+                            <div class="guest-entry row flexer" style="margin-bottom: 15px;">
+                                <div class="col-xl-5">
+                                    <div class="form-group nulled">
+                                        <div class="input-box nulled">
+                                            <input type="email" name="guest_emails[]" 
+                                                   placeholder="Guest email address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-5">
+                                    <div class="form-group nulled">
+                                        <div class="input-box nulled">
+                                            <input type="text" name="guest_names[]" 
+                                                   placeholder="Guest name (optional)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2">
+                                    <button type="button" class="btn btn-danger remove-guest" style="display: none;">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <button type="button" id="add-guest" class="btn btn-secondary" style="margin-bottom: 20px;">
+                                    <i class="fas fa-plus"></i> Add Another Guest
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="row">
+                            <div class="col-xl-12 text-center">
+                                <div class="button-box">
+                                    <button class="btn-one" type="submit" data-loading-text="Please wait...">
+                                        <span class="txt">
+                                            Continue
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Main Book a Call Form Area-->
+
+<style>
+.current {
+    margin-right: 10px;
+}
+.form-section-title {
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.form-section-title h4 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.form-section-title h4 i {
+    margin-right: 10px;
+    color: #007bff;
+}
+
+.section-subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.guest-entry {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #e9ecef;
+}
+
+.flexer {
+    display: flex;
+    place-items: center;
+}
+.alert {
+    margin-bottom: 20px;
+}
+
+select.form-control {
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0 15px;
+    font-size: 14px;
+    background-color: #fff;
+    width: 100%;
+}
+
+select.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.nulled {
+    margin-bottom: 0rem !important;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let guestCount = 1;
+    
+    // Add guest functionality
+    document.getElementById('add-guest').addEventListener('click', function() {
+        guestCount++;
+        const guestsContainer = document.getElementById('guests-container');
+        
+        const guestEntry = document.createElement('div');
+        guestEntry.className = 'guest-entry row flexer';
+        guestEntry.style.marginBottom = '15px';
+        
+        guestEntry.innerHTML = `
+            <div class="col-xl-5">
+                <div class="form-group nulled">
+                    <div class="input-box nulled">
+                        <input type="email" name="guest_emails[]" 
+                               placeholder="Guest email address">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5">
+                <div class="form-group nulled">
+                    <div class="input-box nulled">
+                        <input type="text" name="guest_names[]" 
+                               placeholder="Guest name (optional)">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2">
+                <button type="button" class="btn btn-danger remove-guest">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `;
+        
+        guestsContainer.appendChild(guestEntry);
+        updateRemoveButtons();
+    });
+    
+    // Remove guest functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-guest') || e.target.parentElement.classList.contains('remove-guest')) {
+            const guestEntry = e.target.closest('.guest-entry');
+            guestEntry.remove();
+            guestCount--;
+            updateRemoveButtons();
+        }
+    });
+    
+    function updateRemoveButtons() {
+        const removeButtons = document.querySelectorAll('.remove-guest');
+        removeButtons.forEach(button => {
+            button.style.display = removeButtons.length > 1 ? 'block' : 'none';
+        });
+    }
+    
+    // Initialize remove buttons visibility
+    updateRemoveButtons();
+    
+    // Form validation
+    document.getElementById('book-a-call-form').addEventListener('submit', function(e) {
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const servicesLookingFor = document.getElementById('services_looking_for').value;
+        const businessStage = document.getElementById('business_stage').value;
+        
+        if (!name || !email || !servicesLookingFor || !businessStage) {
+            e.preventDefault();
+            alert('Please fill in all required fields marked with *');
+            return false;
+        }
+        
+        // Show loading state
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalText = submitButton.innerHTML;
+        submitButton.innerHTML = '<span class="txt">Please wait...</span>';
+        submitButton.disabled = true;
+        
+        // Re-enable button after 5 seconds in case of issues
+        setTimeout(() => {
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+        }, 5000);
+    });
+});
+</script>
+
+{% endblock %}

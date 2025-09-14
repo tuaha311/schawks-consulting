@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db import models
-from .models import TeamMember, Service, Case, Testimonial, BlogPost, BlogComment, BlogCategory
+from .models import TeamMember, Service, Case, Testimonial, BlogPost, BlogComment, BlogCategory, BookACall, BookACallGuest
 
 def home(request):
     """Home page view"""
@@ -249,3 +249,46 @@ def client_segment(request):
         'page_title': 'Client Segments',
     }
     return render(request, 'client-segment.html', context)
+
+
+def book_a_call(request):
+    """Book a Call page view with form handling"""
+    if request.method == 'POST':
+        try:
+            # Create the main Book a Call record
+            book_call = BookACall.objects.create(
+                name=request.POST.get('name', '').strip(),
+                website=request.POST.get('website', '').strip(),
+                email=request.POST.get('email', '').strip(),
+                phone=request.POST.get('phone', '').strip(),
+                services_looking_for=request.POST.get('services_looking_for', ''),
+                business_stage=request.POST.get('business_stage', ''),
+                capital_amount=request.POST.get('capital_amount', '').strip(),
+            )
+            
+            # Handle guest emails
+            guest_emails = request.POST.getlist('guest_emails[]')
+            guest_names = request.POST.getlist('guest_names[]')
+            
+            for i, email in enumerate(guest_emails):
+                if email.strip():  # Only create if email is not empty
+                    guest_name = guest_names[i] if i < len(guest_names) else ''
+                    BookACallGuest.objects.create(
+                        book_a_call=book_call,
+                        email=email.strip(),
+                        name=guest_name.strip()
+                    )
+            
+            messages.success(request, 'Thank you! Your Book a Call request has been submitted successfully. We will get back to you soon.')
+            return redirect('consulting:book_a_call')
+            
+        except Exception as e:
+            messages.error(request, 'There was an error submitting your request. Please try again.')
+    
+    # Prepare choices for the template
+    context = {
+        'page_title': 'Book a Call',
+        'service_choices': BookACall.SERVICE_CHOICES,
+        'business_stage_choices': BookACall.BUSINESS_STAGE_CHOICES,
+    }
+    return render(request, 'book-a-call.html', context)

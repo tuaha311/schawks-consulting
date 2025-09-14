@@ -238,7 +238,103 @@ class BlogComment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Comment by {self.name} on {self.blog_post.title}"
+        return f"{self.name} - {self.blog_post.title}"
 
+
+class BookACall(models.Model):
+    """Model for Book a Call questionnaire submissions."""
+    
+    # Service choices
+    SERVICE_CHOICES = [
+        ('fundraising', 'Fundraising'),
+        ('transaction_advisory', 'Transaction Advisory Services'),
+        ('financial_models', 'Financial Models and Investor Documents'),
+        ('ma_advisory', 'M&A Investment Advisory'),
+        ('eta_support', 'ETA Support'),
+        ('due_diligence', 'Due Diligence for a Transaction'),
+        ('fractional_cfo', 'Fractional CFO'),
+        ('investment_research', 'Investment Research'),
+    ]
+    
+    # Business stage choices
+    BUSINESS_STAGE_CHOICES = [
+        ('ideation_mvp', 'Ideation to MVP (Either it\'s just an idea, or you just have an MVP with no traction)'),
+        ('product_development', 'Product is developed or will be developed within 3 months - Ready to launch and need to launch and marketing.'),
+        ('smb_revenue', 'Small and Medium Size Business Already generating revenue - Need Capital to scale'),
+        ('large_corporate', 'Large Corporate (looking for merger, acquisition, strategic sale, expansion, and project finance)'),
+        ('other', 'Other (PE, VC, Search Fund, Investor and Family Office)'),
+    ]
+    
+    # Basic Information
+    name = models.CharField(max_length=200, help_text="What is your name? (So we know what to call you!)")
+    website = models.URLField(max_length=500, blank=True, help_text="Do you have a website we can check out? (if not, please enter N/A)")
+    email = models.EmailField(help_text="What's the best email to reach you? (We'll keep it safe and only use it to connect with you.)")
+    phone = models.CharField(max_length=20, blank=True, help_text="What's your best contact number? (Only needed in case it is important to reach out quickly.)")
+    
+    # Goals and Services
+    services_looking_for = models.CharField(
+        max_length=50,
+        choices=SERVICE_CHOICES,
+        help_text="Are you looking for:"
+    )
+    
+    # Business Stage
+    business_stage = models.CharField(
+        max_length=50,
+        choices=BUSINESS_STAGE_CHOICES,
+        help_text="Which stage best describes your business at the moment?"
+    )
+    
+    # Capital Amount
+    capital_amount = models.CharField(
+        max_length=200,
+        blank=True,
+        help_text="How much capital are you looking to raise (Ballpark figure is fine, if not, please enter NA)"
+    )
+    
+    # Metadata
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_processed = models.BooleanField(default=False, help_text="Mark as processed when call is scheduled")
+    notes = models.TextField(blank=True, help_text="Internal notes for admin use")
+    
     class Meta:
+        verbose_name = "Book a Call Request"
+        verbose_name_plural = "Book a Call Requests"
         ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"{self.name} - {self.get_services_looking_for_display()}"
+    
+    def get_guest_emails(self):
+        """Return a list of guest email addresses."""
+        return [guest.email for guest in self.guests.all()]
+    
+    def guest_count(self):
+        """Return the number of guests added."""
+        return self.guests.count()
+    guest_count.short_description = "Number of Guests"
+
+
+class BookACallGuest(models.Model):
+    """Model for guest emails in Book a Call requests."""
+    
+    book_a_call = models.ForeignKey(
+        BookACall,
+        on_delete=models.CASCADE,
+        related_name='guests',
+        help_text="The Book a Call request this guest belongs to"
+    )
+    email = models.EmailField(help_text="Guest email address")
+    name = models.CharField(max_length=200, blank=True, help_text="Guest name (optional)")
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name = "Book a Call Guest"
+        verbose_name_plural = "Book a Call Guests"
+        unique_together = ['book_a_call', 'email']  # Prevent duplicate emails for the same request
+    
+    def __str__(self):
+        if self.name:
+            return f"{self.name} ({self.email})"
+        return self.email

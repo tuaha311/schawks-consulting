@@ -10,6 +10,8 @@ from .models import (
     BlogCategory,
     BlogPost,
     BlogComment,
+    BookACall,
+    BookACallGuest,
 )
 
 
@@ -154,3 +156,78 @@ class BlogCategoryAdmin(admin.ModelAdmin):
     list_filter = ("is_active",)
     prepopulated_fields = {"slug": ("name",)}
     readonly_fields = ("created_at", "updated_at")
+
+
+class BookACallGuestInline(admin.TabularInline):
+    model = BookACallGuest
+    extra = 1
+    fields = ('email', 'name')
+    verbose_name = "Guest Email"
+    verbose_name_plural = "Guest Emails"
+
+
+@admin.register(BookACall)
+class BookACallAdmin(admin.ModelAdmin):
+    list_display = (
+        "name", 
+        "email", 
+        "services_looking_for", 
+        "business_stage", 
+        "guest_count",
+        "is_processed", 
+        "created_at"
+    )
+    search_fields = ("name", "email", "website", "phone")
+    list_filter = (
+        "services_looking_for", 
+        "business_stage", 
+        "is_processed", 
+        "created_at"
+    )
+    readonly_fields = ("created_at", "updated_at", "guest_count")
+    list_editable = ("is_processed",)
+    
+    fieldsets = (
+        ('Contact Information', {
+            'fields': ('name', 'email', 'phone', 'website')
+        }),
+        ('Business Details', {
+            'fields': ('services_looking_for', 'business_stage', 'capital_amount')
+        }),
+        ('Processing', {
+            'fields': ('is_processed', 'notes')
+        }),
+        ('Metadata', {
+            'fields': ('created_at', 'updated_at', 'guest_count'),
+            'classes': ('collapse',)
+        }),
+    )
+    
+    inlines = [BookACallGuestInline]
+    
+    actions = ['mark_as_processed', 'mark_as_unprocessed']
+    
+    def mark_as_processed(self, request, queryset):
+        updated = queryset.update(is_processed=True)
+        self.message_user(
+            request,
+            f'{updated} Book a Call request(s) marked as processed.'
+        )
+    mark_as_processed.short_description = "Mark selected requests as processed"
+    
+    def mark_as_unprocessed(self, request, queryset):
+        updated = queryset.update(is_processed=False)
+        self.message_user(
+            request,
+            f'{updated} Book a Call request(s) marked as unprocessed.'
+        )
+    mark_as_unprocessed.short_description = "Mark selected requests as unprocessed"
+
+
+@admin.register(BookACallGuest)
+class BookACallGuestAdmin(admin.ModelAdmin):
+    list_display = ("email", "name", "book_a_call", "created_at")
+    search_fields = ("email", "name", "book_a_call__name", "book_a_call__email")
+    list_filter = ("created_at", "book_a_call__services_looking_for")
+    readonly_fields = ("created_at",)
+    list_select_related = ("book_a_call",)
